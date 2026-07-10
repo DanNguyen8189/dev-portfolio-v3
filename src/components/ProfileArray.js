@@ -11,6 +11,7 @@ const parseProfile = (mdContent) => {
     linkedin: "",
     github: "",
     email: "",
+    instagram: "",
     logo: "",
   };
 
@@ -33,11 +34,19 @@ const parseProfile = (mdContent) => {
           break;
         case "Contact":
           profile.contact = lines[++i].trim();
-          const contactLinks = ["LinkedIn", "GitHub", "Email"];
-          for (const link of contactLinks) {
-            const linkLine = lines[++i].substr(2).trim();
-            if (linkLine.startsWith(link)) {
-              profile[link.toLowerCase()] = linkLine.split(": ")[1].trim();
+          while (i + 1 < lines.length && !lines[i + 1].startsWith("## ")) {
+            const linkLine = lines[++i].trim();
+
+            if (!linkLine.startsWith("-")) {
+              continue;
+            }
+
+            const [label, ...valueParts] = linkLine.replace(/^-\s*/, "").split(":");
+            const value = valueParts.join(":").trim();
+            const normalizedLabel = label.trim().toLowerCase();
+
+            if (normalizedLabel in profile) {
+              profile[normalizedLabel] = value;
             }
           }
           break;
@@ -65,6 +74,7 @@ const ProfileArray = () => {
     linkedin: "",
     github: "",
     email: "",
+    instagram: "",
     logo: "",
   });
 

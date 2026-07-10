@@ -2,8 +2,8 @@
 - Portable Portfolio
 
 ## Header
-- Hi, my name is Eldora. 
-- I'm a software engineer.
+- Dan Nguyen
+- Software Engineer
 - Short Description Here.
 
 ## About
@@ -14,6 +14,7 @@ Write your "Contact" section here.
 - LinkedIn: https://linkedin.com/in/username
 - GitHub: https://github.com/username
 - Email: username@gmail.com
+- Instagram: https://www.instagram.com/danimalphantom/?hl=en
 
 ## Logo
 - EB

@@ -7,21 +7,13 @@ import {
   HStack,
   Heading,
   Center,
+  Button,
 } from "@chakra-ui/react";
-import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram } from "react-icons/fa";
 import ProfileArray from "./ProfileArray";
 
 export default function Contact({ color }) {
   const profile = ProfileArray();
-  const linkedin = () => {
-    window.open(`${profile.linkedin}`, "_blank", "noreferrer,noopener");
-  };
-  const github = () => {
-    window.open(`${profile.github}`, "_blank", "noreferrer,noopener");
-  };
-  const email = () => {
-    window.open(`mailto:${profile.email}`, "_blank", "noreferrer,noopener");
-  };
   return (
     <>
       <Container maxW={"3xl"} id="contact">
@@ -49,10 +41,57 @@ export default function Contact({ color }) {
               {profile.email}
             </Text>
             <Center>
-              <HStack pt={4} spacing={4}>
-                <FaLinkedin onClick={linkedin} size={28} />
-                <FaGithub onClick={github} size={28} />
-                <FaEnvelope onClick={email} size={28} />
+              <HStack pt={4} spacing={3} flexWrap="wrap" justify="center">
+                <a href={profile.linkedin} target="_blank" rel="noreferrer noopener" 
+                aria-label="LinkedIn"> <FaLinkedin size={28} /> </a>
+                <a href={profile.github} target="_blank" rel="noreferrer noopener" 
+                aria-label="Github"> <FaGithub size={28} /> </a>
+                <a href={profile.instagram} target="_blank" rel="noreferrer noopener" 
+                aria-label="Instagram"> <FaInstagram size={28} /> </a>
+                <a href={profile.email} target="_blank" rel="noreferrer noopener" 
+                aria-label="Email"> <FaEnvelope size={28} /> </a>
+                {/* <Button
+                  as="a"
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  leftIcon={<FaLinkedin />}
+                  colorScheme={color}
+                  variant="outline"
+                >
+                  LinkedIn
+                </Button>
+                <Button
+                  as="a"
+                  href={profile.github}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  leftIcon={<FaGithub />}
+                  colorScheme={color}
+                  variant="outline"
+                >
+                  GitHub
+                </Button>
+                <Button
+                  as="a"
+                  href={`mailto:${profile.email}`}
+                  leftIcon={<FaEnvelope />}
+                  colorScheme={color}
+                  variant="outline"
+                >
+                  Email
+                </Button>
+                <Button
+                  as="a"
+                  href={profile.instagram}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  leftIcon={<FaInstagram />}
+                  colorScheme={color}
+                  variant="solid"
+                >
+                  Instagram
+                </Button> */}
               </HStack>
             </Center>
           </Stack>
