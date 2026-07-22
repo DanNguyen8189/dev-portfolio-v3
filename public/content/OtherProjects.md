@@ -3,6 +3,7 @@ Description
 - Tags: Category 1
 - Badges:
   - Badge [blue]
+  - Badge [green]
 - Buttons:
   - Link [https://example.com]
 
