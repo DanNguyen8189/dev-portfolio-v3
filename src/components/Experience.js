@@ -21,7 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Fade } from "react-reveal";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ExperienceArray from "./ExperienceArray";
 import TagsArray from "./TagsArray";
 

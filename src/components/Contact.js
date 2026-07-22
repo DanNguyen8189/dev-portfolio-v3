@@ -7,7 +7,7 @@ import {
   HStack,
   Heading,
   Center,
-  Button,
+  //Button,
 } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram } from "react-icons/fa";
 import ProfileArray from "./ProfileArray";

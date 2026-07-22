@@ -9,7 +9,7 @@ import {
   ButtonGroup,
   Card,
   CardBody,
-  Image,
+  //Image,
   Heading,
   SimpleGrid,
   Badge,
