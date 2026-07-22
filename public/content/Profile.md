@@ -1,9 +1,9 @@
 ## Site Name
-- Portable Portfolio
+- Dan's Portfolio
 
 ## Header
 - Dan Nguyen
-- Software Engineer
+- ??
 - Short Description Here.
 
 ## About
