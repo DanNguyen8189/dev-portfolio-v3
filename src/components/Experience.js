@@ -28,14 +28,8 @@ import TagsArray from "./TagsArray";
 export default function Experience({ color }) {
   const experience = ExperienceArray();
   const options = TagsArray("ExperienceTags");
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("All");
 
-  useEffect(() => {
-    if (options.length > 0) {
-      setSelected(options[0].value);
-    }
-  }, [options]);
-  
   const handleSelected = (value) => {
     setSelected(value);
   };
@@ -60,6 +54,12 @@ export default function Experience({ color }) {
           </Stack>
           <Center px={4}>
             <ButtonGroup variant="outline">
+              <Button
+                colorScheme={selected === "All" ? `${color}` : "gray"}
+                onClick={() => handleSelected("All")}
+              >
+                All
+              </Button>
               {options.map((option) => (
                 <Button
                   colorScheme={selected === option.value ? `${color}` : "gray"}
@@ -72,7 +72,14 @@ export default function Experience({ color }) {
           </Center>
           <Stack px={4} spacing={4}>
             {experience
-              .filter((exp) => exp.tags.includes(selected))
+              .filter((exp) => {
+                if (selected === "All") return true;
+                const normalizedSelected = selected.trim().toLowerCase();
+                const normalizedTags = (exp.tags || "")
+                  .split(",")
+                  .map((tag) => tag.trim().toLowerCase());
+                return normalizedTags.includes(normalizedSelected);
+              })
               .map((exp) => (
                 <Fade bottom>
                   <Card key={exp.company} size="sm">
