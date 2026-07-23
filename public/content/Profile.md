@@ -4,10 +4,10 @@
 ## Header
 - Dan Nguyen
 - ??
-- Short Description Here.
+- Short description under construction.
 
 ## About
-Write your "About" section here.
+Under construction
 
 ## Contact
 Write your "Contact" section here.

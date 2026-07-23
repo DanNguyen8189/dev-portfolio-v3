@@ -43,15 +43,14 @@ To edit the content on your website, refer to the markdown files located in the 
 
 ```
 ## Header
-- Hi, my name is ______.
+- Hi, I'm Dan!
 - I'm a ______.
-- Short Description Here.
+
 
 ## About
-Write your "About" section here.
+Under construction
 
 ## Contact
-Write your "Contact" section here.
 - LinkedIn: https://linkedin.com/in/username
 - GitHub: https://github.com/username
 - Email: username@gmail.com

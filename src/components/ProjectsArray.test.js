@@ -1,6 +1,26 @@
 import { parseProjects } from "./ProjectsArray";
 
 describe("parseProjects", () => {
+  it("ignores commented-out project images", () => {
+    const markdown = `
+## Wave Foam Shader
+Description
+<!-- - ![600x200](https://www.ikelite.com/cdn/shop/articles/nudibranch-camera-settings-striped_30130ac6-516a-48f1-bcd4-80abaf76c92a.jpg?v=1571700803&width=1400) -->
+- Tags: Category 1
+- Badges:
+  - Unity [blue]
+  - Shader [blue]
+- Buttons:
+  - ⮺ [https://example.com]
+`;
+
+    const projects = parseProjects(markdown);
+
+    expect(projects).toHaveLength(1);
+    expect(projects[0].name).toBe("Wave Foam Shader");
+    expect(projects[0].image).toBe("");
+  });
+
   it("parses image and video metadata from markdown projects", () => {
     const markdown = `
 ## Demo Project

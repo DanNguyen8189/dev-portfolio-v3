@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 export const parseExperience = (mdContent) => {
-  const sanitizedContent = mdContent.replace(/<!--[\s\S]*?-->/g, "");
+  const content = mdContent.replace(/<!--[\s\S]*?-->/g, "");
   const experience = [];
-  const lines = sanitizedContent.split("\n");
+  const lines = content.split("\n");
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];

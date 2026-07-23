@@ -1,26 +1,12 @@
 import { useState, useEffect } from "react";
 
 export const parseProjects = (mdContent) => {
+  const content = mdContent.replace(/<!--[\s\S]*?-->/g, "");
   const projects = [];
-  const lines = mdContent.split("\n");
-  let commentBlock = false;
+  const lines = content.split("\n");
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-
-    if (line.includes("<!--")) {
-      commentBlock = true;
-      continue;
-    }
-
-    if (line.includes("-->")) {
-      commentBlock = false;
-      continue;
-    }
-
-    if (commentBlock) {
-      continue;
-    }
 
     if (line.startsWith("## ")) {
       const name = line.substr(3).trim();
