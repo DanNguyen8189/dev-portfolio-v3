@@ -72,18 +72,18 @@ export default function Header({ color }) {
               _hover={{
                 bg: `${color}.500`,
               }}
-              onClick={linkedin}
+              onClick={scrollToContact}
             >
               Let's connect!
             </Button>
-            <Button
+            {/* <Button
               variant={"link"}
               colorScheme={"blue"}
               size={"sm"}
               onClick={scrollToContact}
             >
               Contact Me
-            </Button>
+            </Button> */}
             <Box>
               <Icon
                 as={Arrow}

@@ -10,7 +10,6 @@
 Under construction
 
 ## Contact
-Write your "Contact" section here.
 - LinkedIn: https://linkedin.com/in/dannguyen8189
 - GitHub: https://github.com/dannguyen8189
 - Email: dann.comet@gmail.com

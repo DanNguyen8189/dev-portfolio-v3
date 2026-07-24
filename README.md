@@ -16,16 +16,16 @@ To get started with development, you can use the following commands:
 
 ```
 # Install dependencies
-yarn install
+npm install
 
 # Start the development server
-yarn start
+npm start
 
 # Build the static files
-yarn build
+npm build
 ```
 
-After running `yarn start`, your website should be available at `http://localhost:3000`.
+After running `yarn start`, site should be available at `http://localhost:3000`.
 
 ## Site Name
 
@@ -127,8 +127,3 @@ const color = "pink";
 
 You can customize the design of your website by modifying the `theme.js` file located in the `src` folder. Refer to the Chakra UI documentation for more information on how to customize your theme.
 
-## Usage
-
-You may use this template for your own portfolio as long as you give me proper credit by linking back to my profile.
-
-For more details on hosting this site, you may refer to [A Step-by-Step Guide: Deploying on Netlify](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)

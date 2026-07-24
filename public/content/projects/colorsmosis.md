@@ -1,8 +1,8 @@
 
 ### Useful for
 
-- Finding hexcodes in your images
-- Making a color palette out of a picture that you have
+- Planning and building out color themes for sites, branding, or just for fun
+- Finding the mysterious hexcodes of the colors in your images
 
 <!-- ### Visual reference
 
