@@ -1,5 +1,5 @@
 ## RollingStars Studios
-- *background artist* | Jan'23 - Feb'23
+- *background artist* | May'26 - Present
 - ![logo512](../assets/logo512.png)
 - Tags: Art and Visual Development
 - Badges:
@@ -10,7 +10,7 @@
   - Presented design concepts and reasonings in meetings for feedback
 
 ## Zuora
-- *software engineer* | Feb'23 - Mar'23
+- *software engineer* |
 - ![logo512](../assets/logo512.png)
 - Tags: Software Engineering
 - Badges:
@@ -20,7 +20,7 @@
   - Point 2
 
 ## Zuora
-- *software engineer intern* | Mar'23 - Apr'23
+- *software engineer intern* |
 - ![logo512](../assets/logo512.png)
 - Tags: Software Engineering
 - Badges:

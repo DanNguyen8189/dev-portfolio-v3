@@ -34,11 +34,17 @@ export default function Projects({ color }) {
     const projects = ProjectsArray();
     const others = OtherProjectsArray();
     const options = TagsArray("ProjectsTags");
+    const mainOptions = [...new Set(projects.flatMap((project) => project.tags || []))].filter(Boolean);
     
-    const [selected, setSelected] = useState("All");
+    const [selectedMain, setSelectedMain] = useState("All");
+    const [selectedOther, setSelectedOther] = useState("All");
 
-    const handleSelected = (value) => {
-      setSelected(value);
+    const handleSelectedMain = (value) => {
+      setSelectedMain(value);
+    };
+
+    const handleSelectedOther = (value) => {
+      setSelectedOther(value);
     };
     
   return (
@@ -59,14 +65,40 @@ export default function Projects({ color }) {
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
+          <Center px={4}>
+            <ButtonGroup variant="outline">
+              <Button
+                colorScheme={selectedMain === "All" ? `${color}` : "gray"}
+                onClick={() => handleSelectedMain("All")}
+              >
+                All
+              </Button>
+              {mainOptions.map((option) => (
+                <Button
+                  key={option}
+                  colorScheme={selectedMain === option ? `${color}` : "gray"}
+                  onClick={() => handleSelectedMain(option)}
+                >
+                  {option}
+                </Button>
+              ))}
+            </ButtonGroup>
+          </Center>
           <Stack px={4} spacing={4}>
-            {projects.map((project) => (
+            {projects.filter((project) => {
+              if (selectedMain === "All") {
+                return true;
+              }
+
+              return (project.tags || []).includes(selectedMain);
+            }).map((project) => (
               <Box as={motion.div} key={project.name} {...revealProps}>
                 <Card
                   direction={{
                     base: "column",
                   }}
                   overflow="hidden"
+                  px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}
                 >
                   {project.image ? (
                     <Image objectFit="cover" src={project.image} alt={project.name} />
@@ -138,15 +170,16 @@ export default function Projects({ color }) {
           <Center px={4}>
             <ButtonGroup variant="outline">
               <Button
-                colorScheme={selected === "All" ? `${color}` : "gray"}
-                onClick={() => handleSelected("All")}
+                colorScheme={selectedOther === "All" ? `${color}` : "gray"}
+                onClick={() => handleSelectedOther("All")}
               >
                 All
               </Button>
               {options.map((option) => (
                 <Button
-                  colorScheme={selected === option.value ? `${color}` : "gray"}
-                  onClick={() => handleSelected(option.value)}
+                  key={option.value}
+                  colorScheme={selectedOther === option.value ? `${color}` : "gray"}
+                  onClick={() => handleSelectedOther(option.value)}
                 >
                   {option.value}
                 </Button>
@@ -156,10 +189,10 @@ export default function Projects({ color }) {
           <SimpleGrid columns={[1, 2, 3]} px={4} spacing={4}>
             {others
               .filter((other) => {
-                if (selected === "All") {
+                if (selectedOther === "All") {
                   return true;
                 } else {
-                  return other.tags.includes(selected);
+                  return other.tags.includes(selectedOther);
                 }
               })
               .map((other) => (

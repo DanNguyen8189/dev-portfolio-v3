@@ -20,17 +20,9 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { motion } from "framer-motion";
 import { useState } from "react";
 import ExperienceArray from "./ExperienceArray";
 import TagsArray from "./TagsArray";
-
-const revealProps = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.45, ease: "easeOut" },
-};
 
 export default function Experience({ color }) {
   const experience = ExperienceArray();
@@ -69,6 +61,7 @@ export default function Experience({ color }) {
               </Button>
               {options.map((option) => (
                 <Button
+                  key={option.value}
                   colorScheme={selected === option.value ? `${color}` : "gray"}
                   onClick={() => handleSelected(option.value)}
                 >
@@ -88,8 +81,12 @@ export default function Experience({ color }) {
                 return normalizedTags.includes(normalizedSelected);
               })
               .map((exp) => (
-                <Box as={motion.div} key={`${exp.company}-${exp.duration}`} {...revealProps}>
-                  <Card size="sm">
+                  <Card
+                    key={`${exp.company}-${exp.position}-${exp.duration}`}
+                    size="sm"
+                    px={{ base: 4, md: 6 }}
+                    py={{ base: 3, md: 4 }}
+                  >
                     <CardHeader>
                       <Flex justifyContent="space-between">
                         <HStack>
@@ -104,7 +101,7 @@ export default function Experience({ color }) {
                         </Text>
                       </Flex>
                     </CardHeader>
-                    <CardBody>
+                    <CardBody px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}>
                       <Flex>
                         <List align="left" spacing={3}>
                           {exp.listItems.map((item, index) => (
@@ -133,7 +130,6 @@ export default function Experience({ color }) {
                       </HStack>
                     </CardFooter>
                   </Card>
-                </Box>
               ))}
           </Stack>
         </Stack>
