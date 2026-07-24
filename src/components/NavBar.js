@@ -15,12 +15,15 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import ProfileArray from "./ProfileArray";
 const TbIcons = require("react-icons/tb");
 
 export default function Nav({ color }) {
   const profile = ProfileArray();
+  const navigate = useNavigate();
+  const location = useLocation();
   const colors = {
   "blue": "#3182CE", 
   "cyan": "#00B5D8", 
@@ -37,32 +40,33 @@ export default function Nav({ color }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [isLargerThanMD] = useMediaQuery("(min-width: 48em)");
-  const scrollToHero = () => {
-  const heroSection = document.querySelector("#hero");
-    heroSection.scrollIntoView({ behavior: "smooth" });
-  };
-  const scrollToAbout = () => {
-    const aboutSection = document.querySelector("#about");
-    aboutSection.scrollIntoView({ behavior: "smooth" });
-  };
-  const scrollToExperience = () => {
-    const experienceSection = document.querySelector("#experience");
-    experienceSection.scrollIntoView({ behavior: "smooth" });
-  };
-  const scrollToProjects = () => {
-    const projectsSection = document.querySelector("#projects");
-    projectsSection.scrollIntoView({ behavior: "smooth" });
-  };
-  const scrollToContact = () => {
-    const contactSection = document.querySelector("#contact");
-    contactSection.scrollIntoView({ behavior: "smooth" });
-  };
-  const changeScroll = () =>
-    document.body.scrollTop > 80 || document.documentElement.scrollTop > 80
-      ? setScroll(true)
-      : setScroll(false);
+  const scrollToSection = (sectionId) => {
+    if (location.pathname === "/") {
+      const section = document.querySelector(`#${sectionId}`);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/", { state: { scrollTo: sectionId } });
+    }
 
-  window.addEventListener("scroll", changeScroll);
+    onClose();
+  };
+  const scrollToHero = () => scrollToSection("hero");
+  const scrollToAbout = () => scrollToSection("about");
+  const scrollToExperience = () => scrollToSection("experience");
+  const scrollToProjects = () => scrollToSection("projects");
+  const scrollToContact = () => scrollToSection("contact");
+  useEffect(() => {
+    const changeScroll = () =>
+      document.body.scrollTop > 80 || document.documentElement.scrollTop > 80
+        ? setScroll(true)
+        : setScroll(false);
+
+    window.addEventListener("scroll", changeScroll);
+
+    return () => window.removeEventListener("scroll", changeScroll);
+  }, []);
 
   const TbLetterComponents = [];
 

@@ -18,6 +18,7 @@ Description
 
     expect(projects).toHaveLength(1);
     expect(projects[0].name).toBe("Wave Foam Shader");
+    expect(projects[0].slug).toBe("wave-foam-shader");
     expect(projects[0].image).toBe("");
   });
 

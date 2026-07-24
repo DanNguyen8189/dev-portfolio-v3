@@ -1,12 +1,9 @@
-import React from 'react';
-import './App.css';
-import Nav from './components/NavBar';
-import Header from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React, { useEffect } from "react";
+import "./App.css";
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import Nav from "./components/NavBar";
+import HomePage from "./components/HomePage";
+import ProjectDetailPage from "./components/ProjectDetailPage";
 
 function App() {
   // Available Colours:
@@ -16,16 +13,38 @@ function App() {
   const color = "teal";
 
   return (
-    <>
-      <Nav color={color} />
-      <Header color={color} />
-      <About color={color} />
-      <Experience color={color} />
-      <Projects color={color} />
-      <Contact color={color} />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <AppRoutes color={color} />
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+function AppRoutes({ color }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const scrollTarget = location.state?.scrollTo;
+
+    if (location.pathname === "/" && scrollTarget) {
+      const element = document.querySelector(`#${scrollTarget}`);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
+
+  return (
+    <>
+      <Nav color={color} />
+      <Routes>
+        <Route path="/" element={<HomePage color={color} />} />
+        <Route path="/projects/:slug" element={<ProjectDetailPage color={color} />} />
+      </Routes>
+    </>
+  );
+}

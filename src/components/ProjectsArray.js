@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 
+const slugify = (value) =>
+  value
+    .toLowerCase()
+    .replace(/['"]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 export const parseProjects = (mdContent) => {
   const content = mdContent.replace(/<!--[\s\S]*?-->/g, "");
   const projects = [];
@@ -103,6 +110,7 @@ export const parseProjects = (mdContent) => {
 
       projects.push({
         name,
+        slug: slugify(name),
         description,
         image,
         video,

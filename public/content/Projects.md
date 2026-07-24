@@ -7,7 +7,19 @@ a color palette from them! Users can upload an image, adjust how colors they wan
   - React [blue]
   - Astro [blue]
 - Buttons:
+  - Details [/projects/colorsmosis]
   -  ⮺  [https://colorsmosis.netlify.app/]
+
+## Object Variation Shader
+This shader can be used by game artists to add variation to similar objects, and have them fade out into the distance with a blend mode! Think of patches of grass, or lanterns, or oranges in a tree where you have a bunch of the same objects but don't want them to look exactly the same 
+- ![600x200](https://via.placeholder.com/600x200)
+- Tags: Shader
+- Badges:
+  - Unity [blue]
+- Buttons:
+  - Details [/projects/object-variation-shader]
+  - ⮺ [https://example.com] <!--page navigation link goes here-->
+
 
 ## Wave Foam Shader
 <!--- ![600x200](https://via.placeholder.com/600x200)-->
@@ -18,15 +30,6 @@ a color palette from them! Users can upload an image, adjust how colors they wan
   - Unity [blue]
   - Shader [blue]
 - Buttons:
+  - Details [/projects/wave-foam-shader]
   - ⮺ [https://example.com]
-
-## Project B
-Description
-- ![600x200](https://via.placeholder.com/600x200)
-- Tags: Category 2
-- Badges:
-  - Badge [blue]
-- Buttons:
-  - ⮺ [https://example.com]
-
 

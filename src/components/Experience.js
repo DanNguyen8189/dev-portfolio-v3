@@ -20,10 +20,17 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Fade } from "react-reveal";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import ExperienceArray from "./ExperienceArray";
 import TagsArray from "./TagsArray";
+
+const revealProps = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.45, ease: "easeOut" },
+};
 
 export default function Experience({ color }) {
   const experience = ExperienceArray();
@@ -81,8 +88,8 @@ export default function Experience({ color }) {
                 return normalizedTags.includes(normalizedSelected);
               })
               .map((exp) => (
-                <Fade bottom>
-                  <Card key={exp.company} size="sm">
+                <Box as={motion.div} key={`${exp.company}-${exp.duration}`} {...revealProps}>
+                  <Card size="sm">
                     <CardHeader>
                       <Flex justifyContent="space-between">
                         <HStack>
@@ -126,7 +133,7 @@ export default function Experience({ color }) {
                       </HStack>
                     </CardFooter>
                   </Card>
-                </Fade>
+                </Box>
               ))}
           </Stack>
         </Stack>

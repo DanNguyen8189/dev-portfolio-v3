@@ -16,11 +16,19 @@ import {
   Link,
   Center,
 } from "@chakra-ui/react";
-import { Fade } from "react-reveal";
+import { Link as RouterLink } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import ProjectsArray from "./ProjectsArray";
 import OtherProjectsArray from "./OtherProjectsArray";
 import TagsArray from "./TagsArray";
+
+const revealProps = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.45, ease: "easeOut" },
+};
 
 export default function Projects({ color }) {
     const projects = ProjectsArray();
@@ -53,9 +61,8 @@ export default function Projects({ color }) {
           </Stack>
           <Stack px={4} spacing={4}>
             {projects.map((project) => (
-              <Fade bottom>
+              <Box as={motion.div} key={project.name} {...revealProps}>
                 <Card
-                  key={project.name}
                   direction={{
                     base: "column",
                   }}
@@ -91,11 +98,22 @@ export default function Projects({ color }) {
 
                       <HStack py={2}>
                         {project.buttons.map((button) => (
-                          <a key={button.text} href={button.href}>
-                            <Button color={`${color}.400`}>
+                          button.href.startsWith("/") ? (
+                            <Button
+                              key={button.text}
+                              as={RouterLink}
+                              to={button.href}
+                              color={`${color}.400`}
+                            >
                               {button.text}
                             </Button>
-                          </a>
+                          ) : (
+                            <a key={button.text} href={button.href}>
+                              <Button color={`${color}.400`}>
+                                {button.text}
+                              </Button>
+                            </a>
+                          )
                         ))}
                       </HStack>
                       <HStack pt={4} spacing={2}>
@@ -111,7 +129,7 @@ export default function Projects({ color }) {
                     </CardBody>
                   </Stack>
                 </Card>
-              </Fade>
+              </Box>
             ))}
           </Stack>
           <Text color={"gray.600"} fontSize={"xl"} px={4}>
@@ -145,8 +163,8 @@ export default function Projects({ color }) {
                 }
               })
               .map((other) => (
-                <Fade bottom>
-                  <Card key={other.name}>
+                <Box as={motion.div} key={other.name} {...revealProps}>
+                  <Card>
                     <Stack>
                       <CardBody align="left" h={[null, "40vh"]}>
                         <Heading size="sm">{other.name}</Heading>
@@ -180,7 +198,7 @@ export default function Projects({ color }) {
                       </CardBody>
                     </Stack>
                   </Card>
-                </Fade>
+                </Box>
               ))}
           </SimpleGrid>
         </Stack>
