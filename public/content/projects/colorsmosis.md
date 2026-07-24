@@ -1,5 +1,5 @@
 
-### Useful for
+### Uses
 
 - Planning and building out color themes for sites, branding, or just for fun
 - Finding the mysterious hexcodes of the colors in your images

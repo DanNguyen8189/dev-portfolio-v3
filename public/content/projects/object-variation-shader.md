@@ -1,6 +1,6 @@
 This shader is designed to add variation to repeated objects in a scene without having to apply a different material over and over for different objects
 
-## Useful for
+### Uses
 
 - Repeating assets like grass, lanterns, rocks, or trees
 - Soft visual variation across groups of similar objects
@@ -10,7 +10,7 @@ This shader is designed to add variation to repeated objects in a scene without 
 
 ![Object Variation Shader preview](https://via.placeholder.com/1200x675) -->
 
-## Thought processes and considerations
+### Design Notes and Considerations
 
 The crux of this shader is that it calcaulates distance between the object and the camera. The color variation path makes use of a sine wave built from the object's x,y, and z coordinates to lerp between 2 assigned colors (or textures). So based on where the object is located in the world, it'll be assigned a color or texture that's at or somewhere in between the 2 inputted by the artist.
 

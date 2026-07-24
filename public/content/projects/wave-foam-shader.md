@@ -1,5 +1,3 @@
-## Wave Foam Shader
-
 Wave Foam Shader was built as a shader-driven visual study with a focus on
 motion, surface detail, and stylized presentation.
 
