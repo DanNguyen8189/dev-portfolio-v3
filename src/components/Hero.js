@@ -17,13 +17,13 @@ export default function Header({ color }) {
     const contactSection = document.querySelector("#contact");
     contactSection.scrollIntoView({ behavior: "smooth" });
   };
-  const linkedin = () => {
-    window.open(
-                `${profile.linkedin}`,
-                "_blank",
-                "noreferrer,noopener"
-              );
-  };
+  // const linkedin = () => {
+  //   window.open(
+  //               `${profile.linkedin}`,
+  //               "_blank",
+  //               "noreferrer,noopener"
+  //             );
+  // };
   return (
     <>
       <Heading>
