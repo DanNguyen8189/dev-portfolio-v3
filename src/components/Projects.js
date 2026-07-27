@@ -30,7 +30,7 @@ const revealProps = {
   transition: { duration: 0.45, ease: "easeOut" },
 };
 
-export default function Projects({ color }) {
+export default function Projects() {
     const projects = ProjectsArray();
     const others = OtherProjectsArray();
     const options = TagsArray("ProjectsTags");
@@ -58,8 +58,8 @@ export default function Projects({ color }) {
         >
           <Stack align="center" direction="row" p={4}>
             <HStack mx={4}>
-              <Text color={`${color}.400`} fontWeight={800}>
-                03
+              <Text as="span" color="brand.400" fontWeight={800}>
+                o
               </Text>
               <Text fontWeight={800}>Projects</Text>
             </HStack>
@@ -68,7 +68,7 @@ export default function Projects({ color }) {
           <Center px={4}>
             <ButtonGroup variant="outline">
               <Button
-                colorScheme={selectedMain === "All" ? `${color}` : "gray"}
+                colorScheme={selectedMain === "All" ? "brand" : "gray"}
                 onClick={() => handleSelectedMain("All")}
               >
                 All
@@ -76,7 +76,7 @@ export default function Projects({ color }) {
               {mainOptions.map((option) => (
                 <Button
                   key={option}
-                  colorScheme={selectedMain === option ? `${color}` : "gray"}
+                  colorScheme={selectedMain === option ? "brand" : "gray"}
                   onClick={() => handleSelectedMain(option)}
                 >
                   {option}
@@ -98,6 +98,7 @@ export default function Projects({ color }) {
                     base: "column",
                   }}
                   overflow="hidden"
+                  color="appText"
                   px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}
                 >
                   {project.image ? (
@@ -135,13 +136,13 @@ export default function Projects({ color }) {
                               key={button.text}
                               as={RouterLink}
                               to={button.href}
-                              color={`${color}.400`}
+                              color="brand.400"
                             >
                               {button.text}
                             </Button>
                           ) : (
                             <a key={button.text} href={button.href}>
-                              <Button color={`${color}.400`}>
+                              <Button color="brand.400">
                                 {button.text}
                               </Button>
                             </a>
@@ -170,7 +171,7 @@ export default function Projects({ color }) {
           <Center px={4}>
             <ButtonGroup variant="outline">
               <Button
-                colorScheme={selectedOther === "All" ? `${color}` : "gray"}
+                colorScheme={selectedOther === "All" ? "brand" : "gray"}
                 onClick={() => handleSelectedOther("All")}
               >
                 All
@@ -178,7 +179,7 @@ export default function Projects({ color }) {
               {options.map((option) => (
                 <Button
                   key={option.value}
-                  colorScheme={selectedOther === option.value ? `${color}` : "gray"}
+                  colorScheme={selectedOther === option.value ? "brand" : "gray"}
                   onClick={() => handleSelectedOther(option.value)}
                 >
                   {option.value}
@@ -197,7 +198,7 @@ export default function Projects({ color }) {
               })
               .map((other) => (
                 <Box as={motion.div} key={other.name} {...revealProps}>
-                  <Card>
+                  <Card color="appText">
                     <Stack>
                       <CardBody align="left" h={[null, "40vh"]}>
                         <Heading size="sm">{other.name}</Heading>
@@ -211,7 +212,7 @@ export default function Projects({ color }) {
                             <Link
                               key={button.text}
                               href={button.href}
-                              color={`${color}.400`}
+                              color="brand.400"
                             >
                               {button.text}
                             </Link>

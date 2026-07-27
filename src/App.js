@@ -6,22 +6,16 @@ import HomePage from "./components/HomePage";
 import ProjectDetailPage from "./components/ProjectDetailPage";
 
 function App() {
-  // Available Colours:
-  // blue, cyan, gray, green, orange, pink, purple, red, teal, yellow
-
-  // edit this variable to change the color theme
-  const color = "teal";
-
   return (
     <BrowserRouter>
-      <AppRoutes color={color} />
+      <AppRoutes />
     </BrowserRouter>
   );
 }
 
 export default App;
 
-function AppRoutes({ color }) {
+function AppRoutes() {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -40,10 +34,10 @@ function AppRoutes({ color }) {
 
   return (
     <>
-      <Nav color={color} />
+      <Nav />
       <Routes>
-        <Route path="/" element={<HomePage color={color} />} />
-        <Route path="/projects/:slug" element={<ProjectDetailPage color={color} />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       </Routes>
     </>
   );

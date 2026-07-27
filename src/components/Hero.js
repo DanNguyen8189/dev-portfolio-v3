@@ -11,19 +11,12 @@ import {
 } from "@chakra-ui/react";
 import ProfileArray from "./ProfileArray";
 
-export default function Header({ color }) {
+export default function Header() {
   const profile = ProfileArray();
   const scrollToContact = () => {
     const contactSection = document.querySelector("#contact");
     contactSection.scrollIntoView({ behavior: "smooth" });
   };
-  // const linkedin = () => {
-  //   window.open(
-  //               `${profile.linkedin}`,
-  //               "_blank",
-  //               "noreferrer,noopener"
-  //             );
-  // };
   return (
     <>
       <Heading>
@@ -47,7 +40,7 @@ export default function Header({ color }) {
             lineHeight={"110%"}
           >
             {profile.headerName} <br />
-            <Text as={"span"} color={`${color}.400`}>
+            <Text as={"span"} color="brand.400">
               {profile.headerRole}
             </Text>
           </Heading>
@@ -65,12 +58,12 @@ export default function Header({ color }) {
             position={"relative"}
           >
             <Button
-              colorScheme={color}
-              bg={`${color}.400`}
+              colorScheme="brand"
+              bg="brand.400"
               rounded={"full"}
               px={6}
               _hover={{
-                bg: `${color}.500`,
+                bg: "brand.500",
               }}
               onClick={scrollToContact}
             >

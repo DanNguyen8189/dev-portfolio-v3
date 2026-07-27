@@ -1,4 +1,4 @@
-## Project 1
+<!-- ## Project 1
 Description
 - Tags: Category 1
 - Badges:
@@ -21,4 +21,4 @@ Description
 - Badges:
   - Badge [blue]
 - Buttons:
-  - Link [https://example.com]
+  - Link [https://example.com] -->

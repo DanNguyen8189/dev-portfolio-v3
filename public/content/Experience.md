@@ -16,6 +16,7 @@
   - AWS [blue]
   - Kubernetes [blue]
   - Terraform [blue]
+  - Software Architecture [blue]
 - List Items:
   - Took charge of company-wide ci/cd pipeline migrations
   - Developed cloud features and worked on product stability to reduce incidences
@@ -28,6 +29,17 @@
   - AWS [blue]
 - List Items:
   - Set up template for new development and release pipeline as part of larger mirgation efforts
+
+## Innovate Pasadena
+- *web developer* |
+- ![logo512](../assets/logo512.png)
+- Tags: Software Engineering
+- Badges: 
+  - Webflow [blue]
+- List Items:
+  - Designed and built a new website for Innovate Pasadena, a non-profit organization, to modernize its internet presence
+  - Researched and collaborated with others to determine the message we wanted to convey to the public
+
 
 <!-- ## Company 1
 - *Role* | Jan'23 - Feb'23

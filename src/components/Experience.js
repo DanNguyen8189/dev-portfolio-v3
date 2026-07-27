@@ -18,13 +18,14 @@ import {
   Button,
   ButtonGroup,
   Center,
+  Heading
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import ExperienceArray from "./ExperienceArray";
 import TagsArray from "./TagsArray";
 
-export default function Experience({ color }) {
+export default function Experience() {
   const experience = ExperienceArray();
   const options = TagsArray("ExperienceTags");
   const [selected, setSelected] = useState("All");
@@ -44,7 +45,7 @@ export default function Experience({ color }) {
         >
           <Stack align="center" direction="row" px={4}>
             <HStack mx={4}>
-              <Text color={`${color}.400`} fontWeight={800}>
+              <Text color="brand.400" fontWeight={800}>
                 02
               </Text>
               <Text fontWeight={800}>Experience</Text>
@@ -54,7 +55,7 @@ export default function Experience({ color }) {
           <Center px={4}>
             <ButtonGroup variant="outline">
               <Button
-                colorScheme={selected === "All" ? `${color}` : "gray"}
+                colorScheme={selected === "All" ? "brand" : "gray"}
                 onClick={() => handleSelected("All")}
               >
                 All
@@ -62,7 +63,7 @@ export default function Experience({ color }) {
               {options.map((option) => (
                 <Button
                   key={option.value}
-                  colorScheme={selected === option.value ? `${color}` : "gray"}
+                  colorScheme={selected === option.value ? "brand" : "gray"}
                   onClick={() => handleSelected(option.value)}
                 >
                   {option.value}
@@ -84,6 +85,7 @@ export default function Experience({ color }) {
                   <Card
                     key={`${exp.company}-${exp.position}-${exp.duration}`}
                     size="sm"
+                    color="appText"
                     px={{ base: 4, md: 6 }}
                     py={{ base: 3, md: 4 }}
                   >
@@ -92,7 +94,8 @@ export default function Experience({ color }) {
                         <HStack>
                           <Image src={exp.image} h={50} />
                           <Box px={2} align="left">
-                            <Text fontWeight={600}>{exp.company}</Text>
+                            {/* <Text size="md" fontWeight={700}>{exp.company}</Text> */}
+                            <Heading size="md">{exp.company}</Heading>
                             <Text>{exp.position}</Text>
                           </Box>
                         </HStack>
@@ -109,7 +112,7 @@ export default function Experience({ color }) {
                               <ListIcon
                                 boxSize={6}
                                 as={ChevronRightIcon}
-                                color={`${color}.500`}
+                                color="brand.500"
                               />
                               {item}
                             </ListItem>
@@ -118,6 +121,26 @@ export default function Experience({ color }) {
                       </Flex>
                     </CardBody>
                     <CardFooter>
+                      {/* <HStack py={2}>
+                        {exp.buttons.map((button) => (
+                          button.href.startsWith("/") ? (
+                            <Button
+                              key={button.text}
+                              //as={RouterLink}
+                              to={button.href}
+                              color={`${color}.400`}
+                            >
+                              {button.text}
+                            </Button>
+                          ) : (
+                            <a key={button.text} href={button.href}>
+                              <Button color={`${color}.400`}>
+                                {button.text}
+                              </Button>
+                            </a>
+                          )
+                        ))}
+                      </HStack> */}
                       <HStack spacing={2}>
                         {exp.badges.map((badge) => (
                           <Badge

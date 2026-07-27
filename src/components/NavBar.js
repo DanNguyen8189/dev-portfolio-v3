@@ -20,21 +20,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ProfileArray from "./ProfileArray";
 const TbIcons = require("react-icons/tb");
 
-export default function Nav({ color }) {
+export default function Nav() {
   const profile = ProfileArray();
   const navigate = useNavigate();
   const location = useLocation();
-  const colors = {
-  "blue": "#3182CE", 
-  "cyan": "#00B5D8", 
-  "gray": "#718096", 
-  "green": "#38A169", 
-  "orange": "#DD6B20", 
-  "pink": "#D53F8C", 
-  "purple": "#805AD5", 
-  "red": "#E53E3E", 
-  "teal": "#319795", 
-  "yellow": "#D69E2E"};
   const [scroll, setScroll] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -79,8 +68,12 @@ export default function Nav({ color }) {
   return (
     <>
       <Flex
-        bg={useColorModeValue("gray.100", "gray.900")}
-        px={4}
+        bg={useColorModeValue("rgba(247, 250, 252, 0.72)", "rgba(26, 32, 44, 0.72)")}
+        sx={{
+          backdropFilter: "blur(30px)",
+          WebkitBackdropFilter: "blur(30px)",
+        }}
+        px={2}
         h={16}
         boxShadow={scroll ? "base" : "none"}
         zIndex="sticky"
@@ -91,9 +84,9 @@ export default function Nav({ color }) {
         w="100%"
       >
         <Link onClick={scrollToHero}>
-          <HStack>
+          <HStack color="brand.500">
             {TbLetterComponents.map((Component, index) => (
-              <Component key={index} color={colors[color]} />
+              <Component key={index} />
             ))}
           </HStack>
         </Link>
@@ -102,16 +95,16 @@ export default function Nav({ color }) {
           <Stack direction={"row"} spacing={7}>
             {isLargerThanMD ? (
               <>
-                <Button variant="ghost" onClick={scrollToAbout}>
+                <Button variant="nav" onClick={scrollToAbout}>
                   About
                 </Button>
-                <Button variant="ghost" onClick={scrollToExperience}>
+                <Button variant="nav" onClick={scrollToExperience}>
                   Experience
                 </Button>
-                <Button variant="ghost" onClick={scrollToProjects}>
+                <Button variant="nav" onClick={scrollToProjects}>
                   Projects
                 </Button>
-                <Button variant="ghost" onClick={scrollToContact}>
+                <Button variant="nav" onClick={scrollToContact}>
                   Contact
                 </Button>
               </>
@@ -135,16 +128,16 @@ export default function Nav({ color }) {
                   <DrawerOverlay />
                   <DrawerContent>
                     <DrawerBody>
-                      <Button variant="ghost" onClick={scrollToAbout}>
+                      <Button variant="nav" onClick={scrollToAbout}>
                         About
                       </Button>
-                      <Button variant="ghost" onClick={scrollToExperience}>
+                      <Button variant="nav" onClick={scrollToExperience}>
                         Experience
                       </Button>
-                      <Button variant="ghost" onClick={scrollToProjects}>
+                      <Button variant="nav" onClick={scrollToProjects}>
                         Projects
                       </Button>
-                      <Button variant="ghost" onClick={scrollToContact}>
+                      <Button variant="nav" onClick={scrollToContact}>
                         Contact
                       </Button>
                     </DrawerBody>

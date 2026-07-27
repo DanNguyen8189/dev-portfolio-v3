@@ -57,7 +57,7 @@ const parseProjectMarkdown = (mdContent) => {
   };
 };
 
-export default function ProjectDetailPage({ color }) {
+export default function ProjectDetailPage() {
   const navigate = useNavigate();
   const { slug } = useParams();
   const projects = ProjectsArray();
@@ -122,7 +122,7 @@ export default function ProjectDetailPage({ color }) {
       <Image src={src} alt={alt} borderRadius="lg" my={4} w="100%" />
     ),
     a: ({ href, children }) => (
-      <Link href={href} isExternal color={`${color}.400`}>
+      <Link href={href} isExternal color="brand.400">
         {children}
       </Link>
     ),
@@ -206,7 +206,7 @@ export default function ProjectDetailPage({ color }) {
                   width="100%"
                   height="320px"
                 />
-                <Link href={video.href} isExternal color={`${color}.400`}>
+                <Link href={video.href} isExternal color="brand.400">
                   {video.text}
                 </Link>
               </Box>

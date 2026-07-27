@@ -12,7 +12,7 @@ import {
 import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram } from "react-icons/fa";
 import ProfileArray from "./ProfileArray";
 
-export default function Contact({ color }) {
+export default function Contact() {
   const profile = ProfileArray();
   return (
     <>
@@ -25,8 +25,8 @@ export default function Contact({ color }) {
         >
           <Stack align="center" direction="row" p={4}>
             <HStack mx={4}>
-              <Text color={`${color}.400`} fontWeight={800}>
-                04
+              <Text color="brand.400" fontWeight={800}>
+                o
               </Text>
               <Text fontWeight={800}>Contact</Text>
             </HStack>
@@ -37,7 +37,7 @@ export default function Contact({ color }) {
             {/* <Text color={"gray.600"} fontSize={"xl"} px={4}>
               {profile.contact}
             </Text> */}
-            <Text color={`${color}.500`} fontWeight={600} fontSize={"lg"} px={4}>
+            <Text color="brand.500" fontWeight={600} fontSize={"lg"} px={4}>
               {profile.email}
             </Text>
             <Center>

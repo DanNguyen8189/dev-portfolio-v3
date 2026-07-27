@@ -5,14 +5,14 @@ import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
-export default function HomePage({ color }) {
+export default function HomePage() {
   return (
     <>
-      <Header color={color} />
-      <About color={color} />
-      <Experience color={color} />
-      <Projects color={color} />
-      <Contact color={color} />
+      <Header />
+      <About />
+      <Experience />
+      <Projects />
+      <Contact />
       <Footer />
     </>
   );
