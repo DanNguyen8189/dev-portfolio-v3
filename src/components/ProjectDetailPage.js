@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Children, isValidElement, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import {
@@ -31,38 +31,33 @@ const toEmbedUrl = (href) => {
 };
 
 const parseProjectMarkdown = (mdContent) => {
-  const videos = [];
-  const markdownLines = [];
-  const lines = mdContent.replace(/<!--[\s\S]*?-->/g, "").split("\n");
-
-  for (const line of lines) {
-    const trimmedLine = line.trim();
-    const videoMatch = trimmedLine.match(/^Video:? \[([^\]]+)\]\(([^)]+)\)$/i);
-
-    if (videoMatch) {
-      videos.push({
-        text: videoMatch[1].trim(),
-        href: videoMatch[2].trim(),
-        embedUrl: toEmbedUrl(videoMatch[2].trim()),
-      });
-      continue;
-    }
-
-    markdownLines.push(line);
-  }
-
-  return {
-    markdown: markdownLines.join("\n").trim(),
-    videos,
-  };
+  return mdContent.replace(/<!--[\s\S]*?-->/g, "").trim();
 };
+
+const EmbeddedVideo = ({ href, text }) => (
+  <Box my={4}>
+    <Box
+      as="iframe"
+      src={toEmbedUrl(href)}
+      title={text}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      borderRadius="md"
+      width="100%"
+      height="320px"
+    />
+    <Link href={href} isExternal color="brand.400">
+      {text}
+    </Link>
+  </Box>
+);
 
 export default function ProjectDetailPage() {
   const navigate = useNavigate();
   const { slug } = useParams();
   const projects = ProjectsArray();
   const project = projects.find((item) => item.slug === slug);
-  const [detail, setDetail] = useState({ markdown: "", videos: [] });
+  const [detail, setDetail] = useState("");
   const [loadError, setLoadError] = useState("");
 
   useEffect(() => {
@@ -103,29 +98,54 @@ export default function ProjectDetailPage() {
         {children}
       </Heading>
     ),
-    p: ({ children }) => (
-      <Text as="p" py={2} lineHeight="tall">
-        {children}
-      </Text>
-    ),
+    p: ({ children }) => {
+      const hasEmbeddedVideo = Children.toArray(children).some(
+        (child) => isValidElement(child) && child.type === EmbeddedVideo,
+      );
+
+      if (hasEmbeddedVideo) {
+        return <Box py={2}>{children}</Box>;
+      }
+
+      return (
+        <Text as="p" py={2} lineHeight="tall">
+          {children}
+        </Text>
+      );
+    },
     ul: ({ children }) => (
       <Stack as="ul" spacing={3} pl={6} py={2}>
         {children}
       </Stack>
     ),
     li: ({ children }) => (
-      <Box as="li" listStyleType="disc">
-        <Text as="span">{children}</Text>
+      <Box as="li" listStyleType="disc" lineHeight="tall">
+        {children}
       </Box>
     ),
     img: ({ src, alt }) => (
       <Image src={src} alt={alt} borderRadius="lg" my={4} w="100%" />
     ),
-    a: ({ href, children }) => (
-      <Link href={href} isExternal color="brand.400">
-        {children}
-      </Link>
-    ),
+    a: ({ href, children }) => {
+      const embedUrl = toEmbedUrl(href || "");
+      const isYouTubeEmbed = embedUrl !== (href || "");
+
+      if (isYouTubeEmbed) {
+        const text = Array.isArray(children)
+          ? children.filter((child) => typeof child === "string").join("").trim() || "Watch video"
+          : typeof children === "string"
+          ? children
+          : "Watch video";
+
+        return <EmbeddedVideo href={href} text={text} />;
+      }
+
+      return (
+        <Link href={href} isExternal color="brand.400">
+          {children}
+        </Link>
+      );
+    },
   };
 
   if (!project && projects.length === 0) {
@@ -189,7 +209,7 @@ export default function ProjectDetailPage() {
               />
             ) : null}
 
-            {project.video ? (
+            {/* {project.video ? (
               <Box>
                 <Box
                   as="iframe"
@@ -202,32 +222,14 @@ export default function ProjectDetailPage() {
                   height="320px"
                 />
               </Box>
-            ) : null}
-
-            {detail.videos.map((video) => (
-              <Box key={video.href}>
-                <Box
-                  as="iframe"
-                  src={video.embedUrl}
-                  title={video.text}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  borderRadius="md"
-                  width="100%"
-                  height="320px"
-                />
-                <Link href={video.href} isExternal color="brand.400">
-                  {video.text}
-                </Link>
-              </Box>
-            ))}
+            ) : null} */}
 
             {loadError ? (
               <Text color="gray.500">{loadError}</Text>
             ) : (
               <Box className="project-detail-markdown">
                 <ReactMarkdown components={markdownComponents}>
-                  {detail.markdown}
+                  {detail}
                 </ReactMarkdown>
               </Box>
             )}
