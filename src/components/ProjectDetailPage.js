@@ -16,15 +16,15 @@ import {
 import ProjectsArray from "./ProjectsArray";
 
 const toEmbedUrl = (href) => {
-  const youtubeWatchMatch = href.match(/https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/i);
-  const youtuBeMatch = href.match(/https?:\/\/(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/i);
+  const youtubeStandardUrlMatch = href.match(/https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/i);
+  const youtuShortUrlMatch = href.match(/https?:\/\/(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/i);
 
-  if (youtubeWatchMatch) {
-    return `https://www.youtube.com/embed/${youtubeWatchMatch[1]}`;
+  if (youtubeStandardUrlMatch) {
+    return `https://www.youtube.com/embed/${youtubeStandardUrlMatch[1]}`;
   }
 
-  if (youtuBeMatch) {
-    return `https://www.youtube.com/embed/${youtuBeMatch[1]}`;
+  if (youtuShortUrlMatch) {
+    return `https://www.youtube.com/embed/${youtuShortUrlMatch[1]}`;
   }
 
   return href;
@@ -54,7 +54,7 @@ const EmbeddedVideo = ({ href, text }) => (
 
 export default function ProjectDetailPage() {
   const navigate = useNavigate();
-  const { slug } = useParams();
+  const { slug } = useParams(); //for back navigation
   const projects = ProjectsArray();
   const project = projects.find((item) => item.slug === slug);
   const [detail, setDetail] = useState("");
@@ -200,14 +200,14 @@ export default function ProjectDetailPage() {
               </HStack>
             </Stack>
 
-            {project.image ? (
+            {/* {project.image ? (
               <Image
                 src={project.image}
                 alt={project.name}
                 borderRadius="xl"
                 shadow="lg"
               />
-            ) : null}
+            ) : null} */}
 
             {/* {project.video ? (
               <Box>
