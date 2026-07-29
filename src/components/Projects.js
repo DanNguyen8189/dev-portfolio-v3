@@ -61,14 +61,17 @@ export default function Projects() {
               <Text as="span" color="brand.400" fontWeight={800}>
                 o
               </Text>
-              <Text fontWeight={800}>Projects</Text>
+              <Text fontFamily="headingCustom" fontSize="sectionHeading" fontWeight={800}>Projects</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
             <ButtonGroup variant="outline">
               <Button
-                colorScheme={selectedMain === "All" ? "brand" : "gray"}
+                colorScheme={selectedMain === "All" ? "brandAccent" : "brand"}
+              
+                //color={selectedMain === "All" ? "brand.300" : "appText"}
+                borderColor={selectedMain === "All" ? "brandAccent" : "gray.600"}
                 onClick={() => handleSelectedMain("All")}
               >
                 All
@@ -76,7 +79,8 @@ export default function Projects() {
               {mainOptions.map((option) => (
                 <Button
                   key={option}
-                  colorScheme={selectedMain === option ? "brand" : "gray"}
+                  colorScheme={selectedMain === option ? "brandAccent" : "brand"}
+                  borderColor={selectedMain === option ? "brandAccent" : "gray.600"}
                   onClick={() => handleSelectedMain(option)}
                 >
                   {option}
@@ -98,7 +102,6 @@ export default function Projects() {
                     base: "column",
                   }}
                   overflow="hidden"
-                  color="appText"
                   px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}
                 >
                   {project.image ? (
@@ -107,6 +110,7 @@ export default function Projects() {
 
                   <Stack>
                     <CardBody align="left">
+                      <Stack spacing={4}>
                       <Heading size="md">{project.name}</Heading>
 
                       <Text py={2}>{project.description}</Text>
@@ -149,7 +153,7 @@ export default function Projects() {
                           )
                         ))}
                       </HStack>
-                      <HStack pt={4} spacing={2}>
+                      <HStack flexWrap="wrap" pt={4} spacing={2} justify="flex-end">
                         {project.badges.map((badge) => (
                           <Badge
                             key={badge.text}
@@ -159,6 +163,7 @@ export default function Projects() {
                           </Badge>
                         ))}
                       </HStack>
+                      </Stack>
                     </CardBody>
                   </Stack>
                 </Card>
@@ -198,7 +203,7 @@ export default function Projects() {
               })
               .map((other) => (
                 <Box as={motion.div} key={other.name} {...revealProps}>
-                  <Card color="appText">
+                  <Card>
                     <Stack>
                       <CardBody align="left" h={[null, "40vh"]}>
                         <Heading size="sm">{other.name}</Heading>

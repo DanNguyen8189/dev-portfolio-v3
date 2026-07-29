@@ -92,7 +92,7 @@ export default function Nav() {
         </Link>
 
         <Flex alignItems={"center"}>
-          <Stack direction={"row"} spacing={7}>
+          <Stack direction={"row"} spacing={4}>
             {isLargerThanMD ? (
               <>
                 <Button variant="nav" onClick={scrollToAbout}>
@@ -111,7 +111,7 @@ export default function Nav() {
             ) : (
               <></>
             )}
-            <Button onClick={toggleColorMode}>
+            <Button variant="lightingMode" onClick={toggleColorMode}>
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             </Button>
 

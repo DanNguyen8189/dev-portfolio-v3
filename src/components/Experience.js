@@ -46,9 +46,9 @@ export default function Experience() {
           <Stack align="center" direction="row" px={4}>
             <HStack mx={4}>
               <Text color="brand.400" fontWeight={800}>
-                02
+                o
               </Text>
-              <Text fontWeight={800}>Experience</Text>
+              <Text fontFamily="headingCustom" fontSize="sectionHeading" fontWeight={800}>Experience</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
@@ -85,9 +85,10 @@ export default function Experience() {
                   <Card
                     key={`${exp.company}-${exp.position}-${exp.duration}`}
                     size="sm"
-                    color="appText"
+                    color="inherit"
                     px={{ base: 4, md: 6 }}
                     py={{ base: 3, md: 4 }}
+                    gap={4} // space between card sections
                   >
                     <CardHeader>
                       <Flex justifyContent="space-between">
@@ -141,7 +142,7 @@ export default function Experience() {
                           )
                         ))}
                       </HStack> */}
-                      <HStack spacing={2}>
+                      <HStack spacing={2} flexWrap="wrap" justify="flex-end" w="100%">
                         {exp.badges.map((badge) => (
                           <Badge
                             key={badge.name}

@@ -141,7 +141,9 @@ export default function ProjectDetailPage() {
       <Stack spacing={8}>
         <Button
           alignSelf="flex-start"
-          variant="ghost"
+          //variant="ghost"
+          //colorScheme="brand"
+          color="brand.400"
           onClick={() => navigate("/", { state: { scrollTo: "projects" } })}
         >
           Back to Projects

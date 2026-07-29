@@ -38,6 +38,7 @@ export default function Header() {
             fontWeight={600}
             fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
+            fontFamily="headingCustom"
           >
             {profile.headerName} <br />
             <Text as={"span"} color="brand.400">
