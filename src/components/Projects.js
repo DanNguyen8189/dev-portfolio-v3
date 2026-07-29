@@ -65,28 +65,33 @@ export default function Projects() {
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
-          <Center px={4}>
-            <ButtonGroup variant="outline">
-              <Button
-                colorScheme={selectedMain === "All" ? "brandAccent" : "brand"}
-              
-                //color={selectedMain === "All" ? "brand.300" : "appText"}
-                borderColor={selectedMain === "All" ? "brandAccent" : "gray.600"}
-                onClick={() => handleSelectedMain("All")}
-              >
-                All
-              </Button>
-              {mainOptions.map((option) => (
+          <Center px={4} w="100%">
+            <Box maxW="100%" overflowX="auto" px={1}>
+              <ButtonGroup variant="outline" flexWrap="nowrap" minW="max-content" whiteSpace="nowrap">
                 <Button
-                  key={option}
-                  colorScheme={selectedMain === option ? "brandAccent" : "brand"}
-                  borderColor={selectedMain === option ? "brandAccent" : "gray.600"}
-                  onClick={() => handleSelectedMain(option)}
+                  //colorScheme={selectedMain === "All" ? "brandAccent" : "brand"}
+                  //color={selectedMain === "All" ? "brand.300" : "appText"}
+                  //borderColor={selectedMain === "All" ? "brandAccent" : "gray.600"}
+                  variant="filter"
+                  isActive={selectedMain === "All"}
+                  onClick={() => handleSelectedMain("All")}
                 >
-                  {option}
+                  All
                 </Button>
-              ))}
-            </ButtonGroup>
+                {mainOptions.map((option) => (
+                  <Button
+                    key={option}
+                    // colorScheme={selectedMain === option ? "brandAccent" : "brand"}
+                    // borderColor={selectedMain === option ? "brandAccent" : "gray.600"}
+                    variant="filter"
+                    isActive={selectedMain === option}
+                    onClick={() => handleSelectedMain(option)}
+                  >
+                    {option}
+                  </Button>
+                ))}
+              </ButtonGroup>
+            </Box>
           </Center>
           <Stack px={4} spacing={4}>
             {projects.filter((project) => {
@@ -170,76 +175,82 @@ export default function Projects() {
               </Box>
             ))}
           </Stack>
-          <Text color={"gray.600"} fontSize={"xl"} px={4}>
-            Other Projects
-          </Text>
-          <Center px={4}>
-            <ButtonGroup variant="outline">
-              <Button
-                colorScheme={selectedOther === "All" ? "brand" : "gray"}
-                onClick={() => handleSelectedOther("All")}
-              >
-                All
-              </Button>
-              {options.map((option) => (
-                <Button
-                  key={option.value}
-                  colorScheme={selectedOther === option.value ? "brand" : "gray"}
-                  onClick={() => handleSelectedOther(option.value)}
-                >
-                  {option.value}
-                </Button>
-              ))}
-            </ButtonGroup>
-          </Center>
-          <SimpleGrid columns={[1, 2, 3]} px={4} spacing={4}>
-            {others
-              .filter((other) => {
-                if (selectedOther === "All") {
-                  return true;
-                } else {
-                  return other.tags.includes(selectedOther);
-                }
-              })
-              .map((other) => (
-                <Box as={motion.div} key={other.name} {...revealProps}>
-                  <Card>
-                    <Stack>
-                      <CardBody align="left" h={[null, "40vh"]}>
-                        <Heading size="sm">{other.name}</Heading>
+          {others.length > 0?
+          <Stack>
+            <Text color={"gray.600"} fontSize={"xl"} px={4}>
+              Other Projects
+            </Text>
+            <Center px={4} w="100%">
+              <Box maxW="100%" overflowX="auto" px={1}>
+                <ButtonGroup variant="outline" flexWrap="nowrap" minW="max-content" whiteSpace="nowrap">
+                  <Button
+                    colorScheme={selectedOther === "All" ? "brand" : "gray"}
+                    onClick={() => handleSelectedOther("All")}
+                  >
+                    All
+                  </Button>
+                  {options.map((option) => (
+                    <Button
+                      key={option.value}
+                      colorScheme={selectedOther === option.value ? "brand" : "gray"}
+                      onClick={() => handleSelectedOther(option.value)}
+                    >
+                      {option.value}
+                    </Button>
+                  ))}
+                </ButtonGroup>
+              </Box>
+            </Center>
+            <SimpleGrid columns={[1, 2, 3]} px={4} spacing={4}>
+              {others
+                .filter((other) => {
+                  if (selectedOther === "All") {
+                    return true;
+                  } else {
+                    return other.tags.includes(selectedOther);
+                  }
+                })
+                .map((other) => (
+                  <Box as={motion.div} key={other.name} {...revealProps}>
+                    <Card>
+                      <Stack>
+                        <CardBody align="left" h={[null, "40vh"]}>
+                          <Heading size="sm">{other.name}</Heading>
 
-                        <Text fontSize="sm" py={2}>
-                          {other.description}
-                        </Text>
+                          <Text fontSize="sm" py={2}>
+                            {other.description}
+                          </Text>
 
-                        <HStack spacing={2}>
-                          {other.buttons.map((button) => (
-                            <Link
-                              key={button.text}
-                              href={button.href}
-                              color="brand.400"
-                            >
-                              {button.text}
-                            </Link>
-                          ))}
-                        </HStack>
-                        <HStack flexWrap="wrap" pt={4} spacing={2}>
-                          {other.badges.map((badge) => (
-                            <Badge
-                              my={2}
-                              key={badge.text}
-                              colorScheme={badge.colorScheme}
-                            >
-                              {badge.text}
-                            </Badge>
-                          ))}
-                        </HStack>
-                      </CardBody>
-                    </Stack>
-                  </Card>
-                </Box>
-              ))}
-          </SimpleGrid>
+                          <HStack spacing={2}>
+                            {other.buttons.map((button) => (
+                              <Link
+                                key={button.text}
+                                href={button.href}
+                                color="brand.400"
+                              >
+                                {button.text}
+                              </Link>
+                            ))}
+                          </HStack>
+                          <HStack flexWrap="wrap" pt={4} spacing={2}>
+                            {other.badges.map((badge) => (
+                              <Badge
+                                my={2}
+                                key={badge.text}
+                                colorScheme={badge.colorScheme}
+                              >
+                                {badge.text}
+                              </Badge>
+                            ))}
+                          </HStack>
+                        </CardBody>
+                      </Stack>
+                    </Card>
+                  </Box>
+                ))}
+            </SimpleGrid>
+          </Stack>
+          :<></>}
         </Stack>
       </Container>
     </>

@@ -52,24 +52,30 @@ export default function Experience() {
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
-          <Center px={4}>
-            <ButtonGroup variant="outline">
-              <Button
-                colorScheme={selected === "All" ? "brand" : "gray"}
-                onClick={() => handleSelected("All")}
-              >
-                All
-              </Button>
-              {options.map((option) => (
+          <Center px={4} w="100%">
+            <Box maxW="100%" overflowX="auto" px={1}> 
+              <ButtonGroup variant="outline" flexWrap="nowrap" minW="max-content" whiteSpace="nowrap">
                 <Button
-                  key={option.value}
-                  colorScheme={selected === option.value ? "brand" : "gray"}
-                  onClick={() => handleSelected(option.value)}
+                  //colorScheme={selected === "All" ? "brand" : "gray"}
+                  variant="filter"
+                  isActive={selected === "All"}
+                  onClick={() => handleSelected("All")}
                 >
-                  {option.value}
+                  All
                 </Button>
-              ))}
-            </ButtonGroup>
+                {options.map((option) => (
+                  <Button
+                    key={option.value}
+                    //colorScheme={selected === option.value ? "brand" : "gray"}
+                    variant="filter"
+                    isActive={selected === option.value}
+                    onClick={() => handleSelected(option.value)}
+                  >
+                    {option.value}
+                  </Button>
+                ))}
+              </ButtonGroup>
+            </Box>
           </Center>
           <Stack px={4} spacing={4}>
             {experience

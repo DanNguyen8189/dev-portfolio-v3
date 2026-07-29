@@ -58,7 +58,7 @@ const theme = extendTheme({
       },
       navText: {
         default: "brand.600",
-        _dark: "brand.400",
+        _dark: "brand.300",
       },
       navTextHover: {
         default: "brand.900",
@@ -67,6 +67,18 @@ const theme = extendTheme({
       navButtonHover: {
         default: "brand.200",
         _dark: "None",
+      },
+      filterButton: {
+        default: "brand.600",
+        _dark: "brand.300"
+      },
+      filterButtonSelect: {
+        default: "#9b6b28",
+        _dark: "brandAccent.200"
+      },
+      filterButtonBG:{
+        default: "#ffe5d0",
+        _dark: "None"
       },
       siteBG: {
         default: "#99ecfe",
@@ -90,6 +102,10 @@ const theme = extendTheme({
       lightingModeButtonHover:{
         default: "brand.200",
         _dark: "brand.700"
+      },
+      contactHover:{
+        default:"brandAccent.800",
+        _dark: "brandAccent.300"
       }
     },
   },
@@ -109,14 +125,33 @@ const theme = extendTheme({
             bg: "lightingModeButtonHover"
           }
         },
-        filterSelected :{
-          color: ""
+        filter :{
+          color: "filterButton",
+          borderWidth: "1px",
+          borderStyle: "solid",
+          borderColor: "transparent",
+          _hover:{
+            bg:"color-mix(in srgb, var(--chakra-colors-filterButton) 20%, transparent)",
+          },
+          _active: {
+            color: "filterButtonSelect",
+            borderWidth: "1px",
+            borderStyle: "solid",
+            borderColor: "filterButtonSelect",
+            bg: "filterButtonBG",
+            _hover:{
+              bg: "color-mix(in srgb, var(--chakra-colors-filterButtonSelect) 20%, transparent)" // transparency
+            }
+          }
         },
         contact: {
           color: "appText",
           margin: "None",
           padding: "None",
           fontSize: "1.5rem",
+          // _hover:{
+          //   color: "contactHover"
+          // }
         }
       },
     },
