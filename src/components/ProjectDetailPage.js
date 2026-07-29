@@ -138,28 +138,36 @@ export default function ProjectDetailPage() {
 
   return (
     <Container maxW="3xl" pt={24} pb={16}>
-      <Stack spacing={8}>
+      <Stack spacing={10}>
         <Button
           alignSelf="flex-start"
           //variant="ghost"
           //colorScheme="brand"
           color="brand.400"
-          onClick={() => navigate("/", { state: { scrollTo: "projects" } })}
+          onClick={() => {
+            if (project?.slug) {
+              navigate("/", { state: { scrollTo: project.slug } });
+            } else if (window.history.length > 1) {
+              navigate(-1);
+            } else {
+              navigate("/", { state: { scrollTo: "projects" } });
+            }
+          }}
         >
           Back to Projects
         </Button>
 
         {!project ? (
           <Stack spacing={4}>
-            <Heading size="xl">Project not found</Heading>
+            <Heading size="xl" fontFamily="headingCustom">Project not found</Heading>
             <Text>
               This project does not exist yet in the markdown summary list.
             </Text>
           </Stack>
         ) : (
           <>
-            <Stack spacing={4}>
-              <Heading size="2xl">{project.name}</Heading>
+            <Stack spacing={10}>
+              <Heading size="2xl" fontFamily="headingCustom">{project.name}</Heading>
               <Text fontSize="lg" color="gray.500">
                 {project.description}
               </Text>

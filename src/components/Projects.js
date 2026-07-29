@@ -102,6 +102,7 @@ export default function Projects() {
               return (project.tags || []).includes(selectedMain);
             }).map((project) => (
               <Box as={motion.div} key={project.name} {...revealProps}>
+                <Box id={project.slug}> {/** attach slug for scroll purposes*/}
                 <Card
                   direction={{
                     base: "column",
@@ -172,6 +173,7 @@ export default function Projects() {
                     </CardBody>
                   </Stack>
                 </Card>
+                </Box>
               </Box>
             ))}
           </Stack>

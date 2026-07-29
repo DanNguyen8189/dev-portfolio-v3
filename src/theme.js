@@ -106,6 +106,10 @@ const theme = extendTheme({
       contactHover:{
         default:"brandAccent.800",
         _dark: "brandAccent.300"
+      },
+      drawerBG:{
+        default:"#c8f5ff",
+        _dark: "rgb(26, 32, 44)"
       }
     },
   },

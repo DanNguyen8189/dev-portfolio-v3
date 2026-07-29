@@ -22,15 +22,31 @@ function AppRoutes() {
   useEffect(() => {
     const scrollTarget = location.state?.scrollTo;
 
-    if (location.pathname === "/" && scrollTarget) {
-      const element = document.querySelector(`#${scrollTarget}`);
+    if (location.pathname !== "/" || !scrollTarget) {
+      return;
+    }
+
+    const tryScrollToTarget = () => {
+      const element = document.getElementById(scrollTarget);
+
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: "auto" });
+        element.scrollIntoView({ behavior: "auto", block: "start" });
+        navigate(location.pathname, { replace: true, state: {} });
+        return true;
       }
 
-      navigate(location.pathname, { replace: true, state: {} });
+      return false;
+    };
+
+    if (!tryScrollToTarget()) {
+      const timer = window.setTimeout(() => {
+        tryScrollToTarget();
+      }, 150);
+
+      return () => window.clearTimeout(timer);
     }
-  }, [location, navigate]);
+  }, [location.pathname, location.state, navigate]);
 
   return (
     <>

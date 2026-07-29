@@ -92,7 +92,7 @@ export default function Nav() {
         </Link>
 
         <Flex alignItems={"center"}>
-          <Stack direction={"row"} spacing={0}>
+          <Stack direction={"row"} spacing={2}>
             {isLargerThanMD ? (
               <>
                 <Button variant="nav" onClick={scrollToAbout}>
@@ -126,7 +126,7 @@ export default function Nav() {
                 ></Button>
                 <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
                   <DrawerOverlay />
-                  <DrawerContent>
+                  <DrawerContent bg="drawerBG">
                     <DrawerBody>
                       <Stack spacing={3} align="stretch">
                         <Button variant="nav" onClick={scrollToAbout}>
