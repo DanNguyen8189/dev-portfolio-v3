@@ -90,7 +90,7 @@ export default function Experience() {
               transform="translateX(-50%)"
               display={{ base: "none", md: "block" }}
             />
-            <Stack spacing={12}>
+            <Stack spacing={10}>
               {experience
                 .filter((exp) => {
                   if (selected === "All") return true;

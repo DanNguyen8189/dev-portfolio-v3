@@ -4,12 +4,14 @@ a color palette from them! Users can upload an image, adjust how colors they wan
 [Try it out ⮺](https://colorsmosis.netlify.app/)
 
 ## Uses
+## Uses
 
 - Planning and building out color themes for sites, branding, or just for fun
 - Finding the mysterious hexcodes of the colors in your images
 
 ![Colorsmosis screenshot](/assets/ColorsmosisScreenshot.png)
 
+## Design notes
 ## Design notes
 
 - Uses a simple flow so users can get from image to palette quickly
