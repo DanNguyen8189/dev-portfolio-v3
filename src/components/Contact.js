@@ -17,7 +17,7 @@ export default function Contact() {
   const profile = ProfileArray();
   return (
     <>
-      <Container maxW={"3xl"} id="contact">
+      <Container id="contact">
         <Stack
           as={Box}
           textAlign={"center"}
@@ -29,12 +29,12 @@ export default function Contact() {
               <Text color="brand.400" fontWeight={800}>
                 o
               </Text>
-              <Text fontFamily="headingCustom" fontSize="sectionHeading" fontWeight={800}>Contact</Text>
+              <Text fontFamily="heading" fontSize="sectionHeading" fontWeight={800}>Contact</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
-          <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
-            {/* <Heading fontFamily="headingCustom" fontSize={"3xl"}>Let's stay in touch!</Heading> */}
+          <Stack spacing={4} as={Container} textAlign={"center"}>
+            {/* <Heading fontSize={"3xl"}>Let's stay in touch!</Heading> */}
             {/* <Text color={"gray.600"} fontSize={"xl"} px={4}>
               {profile.contact}
             </Text> */}

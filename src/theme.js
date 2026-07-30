@@ -18,7 +18,7 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    headingCustom: "Poiret One, sans-serif",
+    heading: "Poiret One, sans-serif",
   },
   fontSizes: {
     sectionHeading: "1.25rem"
@@ -157,6 +157,23 @@ const theme = extendTheme({
           //   color: "contactHover"
           // }
         }
+      },
+    },
+
+    //defines width of the site. Each section is wrapped in a container, 
+    //which will pull its width from here.
+    Container: {
+      variants: {
+        site: {
+          maxW: "4xl",
+        },
+        siteWide: {
+          // used by footer
+          maxW: "6xl",
+        },
+      },
+      defaultProps: {
+        variant: "site",
       },
     },
     // Card: {

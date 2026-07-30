@@ -36,7 +36,7 @@ export default function Experience() {
 
   return (
     <>
-      <Container maxW={"3xl"} id="experience">
+      <Container id="experience">
         <Stack
           as={Box}
           textAlign={"center"}
@@ -48,7 +48,7 @@ export default function Experience() {
               <Text color="brand.400" fontWeight={800}>
                 o
               </Text>
-              <Text fontFamily="headingCustom" fontSize="sectionHeading" fontWeight={800}>Experience</Text>
+              <Text fontFamily="heading" fontSize="sectionHeading" fontWeight={800}>Experience</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
@@ -77,58 +77,98 @@ export default function Experience() {
               </ButtonGroup>
             </Box>
           </Center>
-          <Stack px={4} spacing={4}>
-            {experience
-              .filter((exp) => {
-                if (selected === "All") return true;
-                const normalizedSelected = selected.trim().toLowerCase();
-                const normalizedTags = (exp.tags || "")
-                  .split(",")
-                  .map((tag) => tag.trim().toLowerCase());
-                return normalizedTags.includes(normalizedSelected);
-              })
-              .map((exp) => (
-                  <Card
-                    key={`${exp.company}-${exp.position}-${exp.duration}`}
-                    size="sm"
-                    color="inherit"
-                    px={{ base: 4, md: 6 }}
-                    py={{ base: 3, md: 4 }}
-                    gap={4} // space between card sections
-                  >
-                    <CardHeader>
-                      <Flex justifyContent="space-between">
-                        <HStack>
-                          <Image src={exp.image} h={50} />
-                          <Box px={2} align="left">
-                            {/* <Text size="md" fontWeight={700}>{exp.company}</Text> */}
-                            <Heading size="md">{exp.company}</Heading>
-                            <Text>{exp.position}</Text>
-                          </Box>
-                        </HStack>
-                        <Text px={2} fontWeight={300}>
-                          {exp.duration}
-                        </Text>
-                      </Flex>
-                    </CardHeader>
-                    <CardBody px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}>
-                      <Flex>
-                        <List align="left" spacing={3}>
-                          {exp.listItems.map((item, index) => (
-                            <ListItem key={index}>
-                              <ListIcon
-                                boxSize={6}
-                                as={ChevronRightIcon}
-                                color="brand.500"
-                              />
-                              {item}
-                            </ListItem>
-                          ))}
-                        </List>
-                      </Flex>
-                    </CardBody>
-                    <CardFooter>
-                      {/* <HStack py={2}>
+          <Box position="relative" px={4} py={4}>
+            {/** center line*/}
+            <Box
+              position="absolute"
+              left="50%"
+              top={0}
+              bottom={0}
+              width="7px"
+              bg="brand.800"
+              borderRadius="full"
+              transform="translateX(-50%)"
+              display={{ base: "none", md: "block" }}
+            />
+            <Stack spacing={10}>
+              {experience
+                .filter((exp) => {
+                  if (selected === "All") return true;
+                  const normalizedSelected = selected.trim().toLowerCase();
+                  const normalizedTags = (exp.tags || "")
+                    .split(",")
+                    .map((tag) => tag.trim().toLowerCase());
+                  return normalizedTags.includes(normalizedSelected);
+                })
+                .map((exp, index) => {
+                  const isLeft = index % 2 === 0;
+
+                  return (
+                    
+                    <Flex
+                      key={`${exp.company}-${exp.position}-${exp.duration}`}
+                      /** alternate between left and right positioning for each card */
+                      justify={{ base: "flex-start", md: isLeft ? "flex-start" : "flex-end" }}
+                      position="relative"
+                    >
+                      {/** dots */}
+                      {/* <Box
+                        position="absolute"
+                        left="50%"
+                        top="50%"
+                        width="14px"
+                        height="14px"
+                        borderRadius="full"
+                        bg="brand.400"
+                        borderWidth="3px"
+                        borderColor="white"
+                        transform="translate(-50%, -50%)"
+                        display={{ base: "none", md: "block" }}
+                        zIndex={1}
+                      /> */}
+                      <Card
+                        size="sm"
+                        color="inherit"
+                        px={{ base: 4, md: 6 }}
+                        py={{ base: 3, md: 4 }}
+                        gap={4}
+                        w={{ base: "100%", md: "70%" }}
+                        mr={{ base: 0, md: isLeft ? 8 : 0 }}
+                        ml={{ base: 0, md: isLeft ? 0 : 8 }}
+                      >
+                        <CardHeader>
+                          <Flex justifyContent="space-between">
+                            <HStack>
+                              <Image src={exp.image} h={50} />
+                              <Box px={2} align="left">
+                                {/* <Text size="md" fontWeight={700}>{exp.company}</Text> */}
+                                <Heading size="md">{exp.company}</Heading>
+                                <Text>{exp.position}</Text>
+                              </Box>
+                            </HStack>
+                            <Text px={2} fontWeight={300}>
+                              {exp.duration}
+                            </Text>
+                          </Flex>
+                        </CardHeader>
+                        <CardBody px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}>
+                          <Flex>
+                            <List align="left" spacing={3}>
+                              {exp.listItems.map((item, itemIndex) => (
+                                <ListItem key={itemIndex}>
+                                  <ListIcon
+                                    boxSize={6}
+                                    as={ChevronRightIcon}
+                                    color="brand.500"
+                                  />
+                                  {item}
+                                </ListItem>
+                              ))}
+                            </List>
+                          </Flex>
+                        </CardBody>
+                        <CardFooter>
+                          {/* <HStack py={2}>
                         {exp.buttons.map((button) => (
                           button.href.startsWith("/") ? (
                             <Button
@@ -148,20 +188,23 @@ export default function Experience() {
                           )
                         ))}
                       </HStack> */}
-                      <HStack spacing={2} flexWrap="wrap" justify="flex-end" w="100%">
-                        {exp.badges.map((badge) => (
-                          <Badge
-                            key={badge.name}
-                            colorScheme={badge.colorScheme}
-                          >
-                            {badge.name}
-                          </Badge>
-                        ))}
-                      </HStack>
-                    </CardFooter>
-                  </Card>
-              ))}
-          </Stack>
+                          <HStack spacing={2} flexWrap="wrap" justify="flex-end" w="100%">
+                            {exp.badges.map((badge) => (
+                              <Badge
+                                key={badge.name}
+                                colorScheme={badge.colorScheme}
+                              >
+                                {badge.name}
+                              </Badge>
+                            ))}
+                          </HStack>
+                        </CardFooter>
+                      </Card>
+                    </Flex>
+                  );
+                })}
+            </Stack>
+          </Box>
         </Stack>
       </Container>
     </>

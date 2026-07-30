@@ -26,7 +26,7 @@ export default function Header() {
         />
       </Heading>
 
-      <Container maxW={"3xl"} id="hero">
+      <Container id="hero">
         <Stack
           as={Box}
           textAlign={"center"}
@@ -38,7 +38,6 @@ export default function Header() {
             fontWeight={600}
             fontSize={{ base: "4xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
-            fontFamily="headingCustom"
             //color="brandAccent.300"
           >
             {profile.headerName} <br />

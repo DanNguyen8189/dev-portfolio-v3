@@ -49,7 +49,7 @@ export default function Projects() {
     
   return (
     <>
-      <Container maxW={"3xl"} id="projects">
+      <Container id="projects">
         <Stack
           as={Box}
           textAlign={"center"}
@@ -61,7 +61,7 @@ export default function Projects() {
               <Text as="span" color="brand.400" fontWeight={800}>
                 o
               </Text>
-              <Text fontFamily="headingCustom" fontSize="sectionHeading" fontWeight={800}>Projects</Text>
+              <Text fontFamily="heading" fontSize="sectionHeading" fontWeight={800}>Projects</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
@@ -110,14 +110,14 @@ export default function Projects() {
                   overflow="hidden"
                   px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}
                 >
-                  {project.image ? (
-                    <Image objectFit="cover" src={project.image} alt={project.name} />
-                  ) : null} 
 
                   <Stack>
                     <CardBody align="left">
                       <Stack spacing={4}>
                       <Heading size="md">{project.name}</Heading>
+                      {project.image ? (
+                        <Image objectFit="cover" src={project.image} alt={project.name} />
+                      ) : null} 
 
                       <Text py={2}>{project.description}</Text>
 
