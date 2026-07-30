@@ -1,18 +1,10 @@
-![hero](example/hero.png)
-
 # Portfolio using React.js and Chakra UI
 
-This portfolio is built using React.js and Chakra UI. It allows you to quickly create and customize your portfolio website using markdown files.
-
-|    ![experience](example/Experience.gif)    | ![projects](example/Projects.gif) |
-| :-----------------------------------------: | :-------------------------------: |
-|       Document your work experiences        |    Showcase your best projects    |
-| ![otherprojects](example/OtherProjects.gif) |   ![mobile](example/Mobile.gif)   |
-|        Include your smaller projects        |     Mobile-responsive design      |
+This portfolio is built using React.js and Chakra UI. It allows customization using markdown files.
 
 ## Getting Started
 
-To get started with development, you can use the following commands:
+To get started with development:
 
 ```
 # Install dependencies
@@ -25,39 +17,11 @@ npm start
 npm build
 ```
 
-After running `yarn start`, site should be available at `http://localhost:3000`.
-
-## Site Name
-
-To edit the site name, go to `public/index.html` and change the `<title>`
-
-```
-<title>Site Name</title>
-```
+After running `npm start`, site should be available at `http://localhost:3000`.
 
 ## Editing Content
 
 To edit the content on your website, refer to the markdown files located in the `public/content` folder.
-
-### Profile.md
-
-```
-## Header
-- Hi, I'm Dan!
-- I'm a ______.
-
-
-## About
-Under construction
-
-## Contact
-- LinkedIn: https://linkedin.com/in/username
-- GitHub: https://github.com/username
-- Email: username@gmail.com
-
-## Logo
-- EB
-```
 
 ### ExperienceTags.md and ProjectsTags.md
 
@@ -69,7 +33,7 @@ Category 3
 
 ### Experience.md
 
-To edit your work experience, update the `Experience.md` file with the following format:
+To edit work experience, update the `Experience.md` file with the following format:
 
 ```
 ## Company Name
@@ -112,18 +76,30 @@ Description
   - ButtonContent [button_link]
 ```
 
-## Colour Theme
+### Project Details
+Each project with an expanded page can be found in public/content/projects
+These a slightly different than the project and experience sections above; formatting is less rigid and you get to decide where pictures, videos, and bullet points show up based on the order you put them in the markdown file.
+```
+Quick description
 
-You can choose from 10 different colours provided by Chakra UI. Modify the `color` variable in the `App.js` file located in the `src` folder.
+## Heading 2
+
+paragraph
+![image_name](/assets/image_name.png)
+
+### heading 3
+
+paragraph
+ - bullet
+ - bullet
+   - bullet
 
 ```
-// Available Colours:
-// blue, cyan, gray, green, orange, pink, purple, red, teal, yellow
-
-const color = "pink";
-```
-
 ## Customizing Design
 
-You can customize the design of your website by modifying the `theme.js` file located in the `src` folder. Refer to the Chakra UI documentation for more information on how to customize your theme.
+Change colors, fonts, and site design located in src/theme.js. Refer to Chakra UI documentation for more information.
+
+Repo is based off of original from
+https://github.com/eldoraboo/portable-portfolio
+
 
