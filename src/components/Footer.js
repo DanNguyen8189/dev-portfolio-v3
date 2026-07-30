@@ -14,7 +14,7 @@ export default function Footer() {
     >
       <Container
         as={Stack}
-        maxW={"6xl"}
+        variant="siteWide"
         py={4}
         align="center"
       >

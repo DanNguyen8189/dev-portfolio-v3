@@ -155,14 +155,14 @@ export default function ProjectDetailPage() {
 
   if (!project && projects.length === 0) {
     return (
-      <Container maxW="3xl" pt={24} pb={16}>
+      <Container pt={24} pb={16}>
         <Text>Loading project details...</Text>
       </Container>
     );
   }
 
   return (
-    <Container maxW="3xl" pt={24} pb={16}>
+    <Container pt={24} pb={16}>
       <Stack spacing={10}>
         <Button
           alignSelf="flex-start"
@@ -184,7 +184,7 @@ export default function ProjectDetailPage() {
 
         {!project ? (
           <Stack spacing={4}>
-            <Heading size="xl" fontFamily="headingCustom">Project not found</Heading>
+            <Heading size="xl">Project not found</Heading>
             <Text>
               This project does not exist yet in the markdown summary list.
             </Text>
@@ -192,7 +192,7 @@ export default function ProjectDetailPage() {
         ) : (
           <>
             <Stack spacing={10}>
-              <Heading size="2xl" fontFamily="headingCustom">{project.name}</Heading>
+              <Heading size="2xl">{project.name}</Heading>
               <Text fontSize="lg" color="gray.500">
                 {project.description}
               </Text>
