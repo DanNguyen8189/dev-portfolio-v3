@@ -1,4 +1,4 @@
-This shader is designed to add variation to repeated objects in a scene without having to apply a different material over and over for different objects
+This shader can be used by game artists to add variation to similar objects, and have them fade out into the distance with a blend mode! Think of patches of grass, or lanterns, or oranges in a tree where you have a bunch of the same objects but don't want them to look exactly the same 
 
 ## Uses
 

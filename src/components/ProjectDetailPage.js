@@ -35,7 +35,10 @@ const toEmbedUrl = (href) => {
 };
 
 const parseProjectMarkdown = (mdContent) => {
-  return mdContent.replace(/<!--[\s\S]*?-->/g, "").trim();
+  return mdContent
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/\[(https?:\/\/[^\]\s]+)\]/g, "[$1]($1)")
+    .trim();
 };
 
 const EmbeddedVideo = ({ href, text }) => (
@@ -145,10 +148,25 @@ export default function ProjectDetailPage() {
         return <EmbeddedVideo href={href} text={text} />;
       }
 
+      const buttonText = Array.isArray(children)
+        ? children.filter((child) => typeof child === "string").join("").trim() || "Open link"
+        : typeof children === "string"
+        ? children
+        : "Open link";
+
       return (
-        <Link href={href} isExternal color="brand.400">
-          {children}
-        </Link>
+        <Button
+          as="a"
+          href={href}
+          isExternal
+          target="_blank"
+          rel="noreferrer noopener"
+          color="brand.400"
+          variant="outline"
+          size="sm"
+        >
+          {buttonText}
+        </Button>
       );
     },
   };

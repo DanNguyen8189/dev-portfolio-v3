@@ -6,7 +6,7 @@
   - BG Paint [blue]
   - BG Layout [blue]
 - List Items:
-  - Background painting and designing environments to fit in with the show’s world and characters, demonstrating skills in composition, color theory, perspective while switching between art styles for different worlds
+  - Background painting and designing environments to fit in with the show’s world and characters while switching styles for different worlds
 
 ## Zuora
 - *software engineer* |
@@ -38,7 +38,6 @@
   - Webflow [blue]
 - List Items:
   - Designed and built a new website for Innovate Pasadena, a non-profit organization, to modernize its internet presence
-  - Researched and collaborated with others to determine the message we wanted to convey to the public
 
 
 <!-- ## Company 1
