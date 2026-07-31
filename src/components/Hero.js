@@ -8,11 +8,12 @@ import {
   Icon,
   useColorModeValue,
   createIcon,
+  Flex
 } from "@chakra-ui/react";
-import useProfileData from "../data/useProfileData";
+import ProfileArray from "../data/useProfileData";
 
 export default function Header() {
-  const profile = useProfileData();
+  const profile = ProfileArray();
   const scrollToContact = () => {
     const contactSection = document.querySelector("#contact");
     contactSection.scrollIntoView({ behavior: "smooth" });
@@ -26,80 +27,110 @@ export default function Header() {
         />
       </Heading>
 
-      <Container id="hero">
-        <Stack
-          as={Box}
-          textAlign={"center"}
-          spacing={{ base: 8, md: 14 }}
-          pb={{ base: 20, md: 36 }}
-          pt={{ base: 36, md: 52 }}
+      <Container
+        id="hero"
+        minH="100vh"
+        //maxW="100%"
+        //bgImage="url('/assets/adrien-converse-unsplash.png.jpg')"
+        bgSize="cover"
+        bgPosition="center"
+        bgRepeat="no-repeat"
+        // _before={{
+        //   content: '""',
+        //   position: "absolute",
+        //   top: 0,
+        //   left: 0,
+        //   right: 0,
+        //   bottom: 0,
+        //   bg: "black/40", // 40% black overlay
+        // }}
+      >
+        {/* <Box
+          position="absolute"
+          inset={0}
+          bg="blackAlpha.800"
+        /> */}
+        <Flex
+          position="relative"
+          h="100vh"
+          align="center"   // Vertical centering
+          justify="center" // Horizontal centering
+          zIndex={1}
         >
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: "4xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"110%"}
-            //color="brandAccent.300"
-          >
-            {profile.headerName} <br />
-            <Text as={"span"} color="brand.400">
-              {profile.headerRole}
-            </Text>
-          </Heading>
-          <Text
-            color={"appText"}
-            fontSize={{ base: "lg", sm: "xl", md: "2xl" }}
-          >
-            {profile.headerDesc}
-          </Text>
           <Stack
-            direction={"column"}
-            spacing={3}
-            align={"center"}
-            alignSelf={"center"}
-            position={"relative"}
+            as={Box}
+            textAlign={"center"}
+            spacing={{ base: 8, md: 14 }}
+            pb={{ base: 20, md: 36 }}
+            pt={{ base: 36, md: 52 }}
           >
-            <Button
-              colorScheme="brand"
-              bg="brand.400"
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "brand.500",
-              }}
-              onClick={scrollToContact}
+            <Heading
+              fontWeight={600}
+              fontSize={{ base: "4xl", sm: "4xl", md: "6xl" }}
+              lineHeight={"110%"}
+              //color="brandAccent.300"
             >
-              Let's connect!
-            </Button>
-            {/* <Button
-              variant={"link"}
-              colorScheme={"blue"}
-              size={"sm"}
-              onClick={scrollToContact}
-            >
-              Contact Me
-            </Button> */}
-            <Box>
-              <Icon
-                as={Arrow}
-                color={useColorModeValue("gray.800", "gray.300")}
-                w={71}
-                position={"absolute"}
-                right={-71}
-                top={"10px"}
-              />
-              <Text
-                fontSize={"lg"}
-                fontFamily={"Caveat"}
-                position={"absolute"}
-                right={"-85px"}
-                top={"-15px"}
-                transform={"rotate(10deg)"}
-              >
-                Click me!
+              {profile.headerName} <br />
+              <Text as={"span"} color="brand.400">
+                {profile.headerRole}
               </Text>
-            </Box>
+            </Heading>
+            <Text
+              color={"appText"}
+              fontSize={{ base: "lg", sm: "xl", md: "2xl" }}
+            >
+              {profile.headerDesc}
+            </Text>
+            <Stack
+              direction={"column"}
+              spacing={3}
+              align={"center"}
+              alignSelf={"center"}
+              position={"relative"}
+            >
+              <Button
+                colorScheme="brand"
+                bg="brand.400"
+                rounded={"full"}
+                px={6}
+                _hover={{
+                  bg: "brand.500",
+                }}
+                onClick={scrollToContact}
+              >
+                Let's connect!
+              </Button>
+              {/* <Button
+                variant={"link"}
+                colorScheme={"blue"}
+                size={"sm"}
+                onClick={scrollToContact}
+              >
+                Contact Me
+              </Button> */}
+              <Box>
+                <Icon
+                  as={Arrow}
+                  color={useColorModeValue("gray.800", "gray.300")}
+                  w={71}
+                  position={"absolute"}
+                  right={-71}
+                  top={"10px"}
+                />
+                <Text
+                  fontSize={"lg"}
+                  fontFamily={"Caveat"}
+                  position={"absolute"}
+                  right={"-85px"}
+                  top={"-15px"}
+                  transform={"rotate(10deg)"}
+                >
+                  Click me!
+                </Text>
+              </Box>
+            </Stack>
           </Stack>
-        </Stack>
+        </Flex>
       </Container>
     </>
   );
