@@ -1,4 +1,4 @@
-import { parseProjects } from "./ProjectsArray";
+import { parseProjects } from "../data/useProjectsData";
 
 describe("parseProjects", () => {
   it("ignores commented-out project images", () => {

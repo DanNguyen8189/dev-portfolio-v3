@@ -19,9 +19,9 @@ import {
 import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import ProjectsArray from "./ProjectsArray";
-import OtherProjectsArray from "./OtherProjectsArray";
-import TagsArray from "./TagsArray";
+import useProjectsData from "../data/useProjectsData";
+import useOtherProjectsData from "../data/useOtherProjectsData";
+import useTagData from "../data/useTagData";
 
 const revealProps = {
   initial: { opacity: 0, y: 24 },
@@ -31,9 +31,9 @@ const revealProps = {
 };
 
 export default function Projects() {
-    const projects = ProjectsArray();
-    const others = OtherProjectsArray();
-    const options = TagsArray("ProjectsTags");
+    const projects = useProjectsData();
+    const others = useOtherProjectsData();
+    const options = useTagData("ProjectsTags");
     const mainOptions = [...new Set(projects.flatMap((project) => project.tags || []))].filter(Boolean);
     
     const [selectedMain, setSelectedMain] = useState("All");

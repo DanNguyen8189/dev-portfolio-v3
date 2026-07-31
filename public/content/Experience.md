@@ -2,9 +2,9 @@
 - *background artist* | May'26 - Present
 - ![logo512](../assets/logo512.png)
 - Tags: Art and Visual Development
-- Badges:
+<!-- - Badges:
   - BG Paint [blue]
-  - BG Layout [blue]
+  - BG Layout [blue] -->
 - List Items:
   - Background painting and designing environments to fit in with the show’s world and characters while switching styles for different worlds
 
@@ -12,11 +12,11 @@
 - *software engineer* |
 - ![logo512](../assets/logo512.png)
 - Tags: Software Engineering
-- Badges:
+<!-- - Badges:
   - AWS [blue]
   - Kubernetes [blue]
   - Terraform [blue]
-  - Software Architecture [blue]
+  - Software Architecture [blue] -->
 - List Items:
   - Took charge of company-wide ci/cd pipeline migrations
   - Developed cloud features and worked on product stability to reduce incidences
@@ -25,8 +25,8 @@
 - *software engineer intern* |
 - ![logo512](../assets/logo512.png)
 - Tags: Software Engineering
-- Badges:
-  - AWS [blue]
+<!-- - Badges:
+  - AWS [blue] -->
 - List Items:
   - Set up template for new development and release pipeline as part of larger mirgation efforts
 
@@ -34,8 +34,8 @@
 - *web developer* |
 - ![logo512](../assets/logo512.png)
 - Tags: Software Engineering
-- Badges: 
-  - Webflow [blue]
+<!-- - Badges: 
+  - Webflow [blue] -->
 - List Items:
   - Designed and built a new website for Innovate Pasadena, a non-profit organization, to modernize its internet presence
 

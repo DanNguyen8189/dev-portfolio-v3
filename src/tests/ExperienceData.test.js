@@ -1,4 +1,4 @@
-import { parseExperience } from "./ExperienceArray";
+import { parseExperience } from "../data/useExperienceData";
 
 describe("parseExperience", () => {
   it("does not merge commented block details into the previous entry", () => {
@@ -29,7 +29,7 @@ describe("parseExperience", () => {
     expect(experience).toHaveLength(1);
     expect(experience[0].company).toBe("Zuora");
     expect(experience[0].tags).toBe("Software Engineering");
-    expect(experience[0].badges).toEqual([{ name: "Badge", colorScheme: "blue" }]);
+    expect(experience[0].badges).toEqual([{ text: "Badge", colorScheme: "blue" }]);
     expect(experience[0].listItems).toEqual(["Point 1", "Point 2"]);
   });
 
@@ -85,7 +85,7 @@ describe("parseExperience", () => {
       duration: "Jan'23 - Feb'23",
       image: "../assets/logo512.png",
       tags: "Art",
-      badges: [{ name: "Badge", colorScheme: "blue" }],
+      badges: [{ text: "Badge", colorScheme: "blue" }],
       listItems: ["Point 1", "Point 2"],
     });
   });

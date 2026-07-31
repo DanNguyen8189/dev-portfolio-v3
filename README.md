@@ -19,6 +19,10 @@ npm build
 
 After running `npm start`, site should be available at `http://localhost:3000`.
 
+## Architecture
+
+For code organization, data flow, and folder conventions, see [ARCHITECTURE.md](ARCHITECTURE.md).
+
 ## Editing Content
 
 To edit the content on your website, refer to the markdown files located in the `public/content` folder.

@@ -1,5 +1,9 @@
 This shader can be used by game artists to add variation to similar objects, and have them fade out into the distance with a blend mode! Think of patches of grass, or lanterns, or oranges in a tree where you have a bunch of the same objects but don't want them to look exactly the same 
 
+- Badges:
+  - Unity [blue]
+  - Shader [blue]
+
 ## Uses
 
 - Repeating assets like grass, lanterns, rocks, or trees

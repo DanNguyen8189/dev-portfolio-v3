@@ -6,10 +6,10 @@ import {
   Box,
   HStack,
 } from "@chakra-ui/react";
-import ProfileArray from "./ProfileArray";
+import useProfileData from "../data/useProfileData";
 
 export default function About() {
-  const profile = ProfileArray();
+  const profile = useProfileData();
     return (
       <>
         <Container id="about">

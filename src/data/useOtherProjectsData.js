@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
+import {
+  parseBadgeListLine,
+  parseButtonListLine,
+  stripMarkdownComments,
+} from "../utils/markdownSectionData";
 
 export const parseOtherProjects = (mdContent) => {
-  const content = mdContent.replace(/<!--[\s\S]*?-->/g, "");
+  const content = stripMarkdownComments(mdContent);
   const others = [];
   const lines = content.split("\n");
 
@@ -47,20 +52,20 @@ export const parseOtherProjects = (mdContent) => {
           continue;
         }
 
-        if (collectingBadges && currentLine.startsWith("  - ")) {
-          const badgeLine = currentLine.substr(4).split("[");
-          const badgeName = badgeLine[0].trim();
-          const badgeColor = badgeLine[1]?.split("]")[0].trim() || "gray";
-          badges.push({ text: badgeName, colorScheme: badgeColor });
-          continue;
+        if (collectingBadges) {
+          const parsedBadge = parseBadgeListLine(currentLine);
+          if (parsedBadge) {
+            badges.push(parsedBadge);
+            continue;
+          }
         }
 
-        if (collectingButtons && currentLine.startsWith("  - ")) {
-          const buttonLine = currentLine.substr(4).split("[");
-          const buttonText = buttonLine[0].trim();
-          const buttonHref = buttonLine[1]?.split("]")[0].trim() || "";
-          buttons.push({ text: buttonText, href: buttonHref });
-          continue;
+        if (collectingButtons) {
+          const parsedButton = parseButtonListLine(currentLine);
+          if (parsedButton) {
+            buttons.push(parsedButton);
+            continue;
+          }
         }
 
         if (!description) {
@@ -83,7 +88,7 @@ export const parseOtherProjects = (mdContent) => {
   return others;
 };
 
-const OtherProjectsArray = () => {
+const useOtherProjectsData = () => {
   const [otherProjects, setOtherProjects] = useState([]);
 
   useEffect(() => {
@@ -105,4 +110,4 @@ const OtherProjectsArray = () => {
   return otherProjects;
 };
 
-export default OtherProjectsArray;
+export default useOtherProjectsData;

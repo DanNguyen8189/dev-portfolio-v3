@@ -14,8 +14,8 @@ const parseProfile = (mdContent) => {
     instagram: "",
     logo: "",
   };
-
-  const lines = mdContent.split("\n");
+  const content = mdContent.replace(/<!--[\s\S]*?-->/g, "");
+  const lines = content.split("\n");
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -63,7 +63,7 @@ const parseProfile = (mdContent) => {
   return profile;
 };
 
-const ProfileArray = () => {
+const useProfileData = () => {
   const [profile, setProfile] = useState({
     siteName: "",
     headerName: "",
@@ -97,4 +97,4 @@ const ProfileArray = () => {
   return profile;
 };
 
-export default ProfileArray;
+export default useProfileData;

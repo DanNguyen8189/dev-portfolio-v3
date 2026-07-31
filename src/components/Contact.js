@@ -11,10 +11,10 @@ import {
   IconButton
 } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub, FaEnvelope, FaInstagram } from "react-icons/fa";
-import ProfileArray from "./ProfileArray";
+import useProfileData from "../data/useProfileData";
 
 export default function Contact() {
-  const profile = ProfileArray();
+  const profile = useProfileData();
   return (
     <>
       <Container id="contact">

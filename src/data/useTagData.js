@@ -14,7 +14,7 @@ const parseTags = (mdContent) => {
   return tags;
 };
 
-const TagsArray = (file) => {
+const useTagData = (file) => {
   const [Tags, setTags] = useState([]);
 
   useEffect(() => {
@@ -36,4 +36,4 @@ const TagsArray = (file) => {
   return Tags;
 };
 
-export default TagsArray;
+export default useTagData;

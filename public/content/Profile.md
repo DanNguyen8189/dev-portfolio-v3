@@ -3,8 +3,8 @@
 
 ## Header
 - Dan Nguyen
-- ??
-- Short description under construction.
+<!-- - ?? -->
+- Hi! I'm Dan, a developer from Los Angeles. I'm a software developer/technical artist and enjoy learning new things!
 
 ## About
 Under construction

@@ -17,11 +17,11 @@ import {
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import ProfileArray from "./ProfileArray";
+import useProfileData from "../data/useProfileData";
 const TbIcons = require("react-icons/tb");
 
 export default function Nav() {
-  const profile = ProfileArray();
+  const profile = useProfileData();
   const navigate = useNavigate();
   const location = useLocation();
   const [scroll, setScroll] = useState(false);

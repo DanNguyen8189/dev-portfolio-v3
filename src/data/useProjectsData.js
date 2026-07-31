@@ -1,4 +1,10 @@
 import { useState, useEffect } from "react";
+import {
+  parseBadgeListLine,
+  parseButtonListLine,
+  stripMarkdownComments,
+} from "../utils/markdownSectionData";
+import { toEmbedUrl } from "../utils/mediaLinks";
 
 const slugify = (value) =>
   value
@@ -8,7 +14,7 @@ const slugify = (value) =>
     .replace(/^-+|-+$/g, "");
 
 export const parseProjects = (mdContent) => {
-  const content = mdContent.replace(/<!--[\s\S]*?-->/g, "");
+  const content = stripMarkdownComments(mdContent);
   const projects = [];
   const lines = content.split("\n");
 
@@ -48,18 +54,11 @@ export const parseProjects = (mdContent) => {
         const videoMatch = trimmedLine.match(/Video:? \[([^\]]+)\]\(([^)]+)\)/i);
         if (videoMatch) {
           const href = videoMatch[2].trim();
-          const youtubeWatchMatch = href.match(/https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/i);
-          const youtuBeMatch = href.match(/https?:\/\/(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/i);
-          const embedUrl = youtubeWatchMatch
-            ? `https://www.youtube.com/embed/${youtubeWatchMatch[1]}`
-            : youtuBeMatch
-            ? `https://www.youtube.com/embed/${youtuBeMatch[1]}`
-            : href;
 
           video = {
             text: videoMatch[1].trim(),
             href,
-            embedUrl,
+            embedUrl: toEmbedUrl(href),
           };
           collectingBadges = false;
           collectingButtons = false;
@@ -85,20 +84,20 @@ export const parseProjects = (mdContent) => {
           continue;
         }
 
-        if (collectingBadges && currentLine.startsWith("  - ")) {
-          const badgeLine = currentLine.substr(4).split("[");
-          const badgeName = badgeLine[0].trim();
-          const badgeColor = badgeLine[1]?.split("]")[0].trim() || "gray";
-          badges.push({ text: badgeName, colorScheme: badgeColor });
-          continue;
+        if (collectingBadges) {
+          const parsedBadge = parseBadgeListLine(currentLine);
+          if (parsedBadge) {
+            badges.push(parsedBadge);
+            continue;
+          }
         }
 
-        if (collectingButtons && currentLine.startsWith("  - ")) {
-          const buttonLine = currentLine.substr(4).split("[");
-          const buttonText = buttonLine[0].trim();
-          const buttonHref = buttonLine[1]?.split("]")[0].trim() || "";
-          buttons.push({ text: buttonText, href: buttonHref });
-          continue;
+        if (collectingButtons) {
+          const parsedButton = parseButtonListLine(currentLine);
+          if (parsedButton) {
+            buttons.push(parsedButton);
+            continue;
+          }
         }
 
         if (!description) {
@@ -124,7 +123,7 @@ export const parseProjects = (mdContent) => {
   return projects;
 };
 
-const ProjectsArray = () => {
+const useProjectsData = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -146,4 +145,4 @@ const ProjectsArray = () => {
   return projects;
 };
 
-export default ProjectsArray;
+export default useProjectsData;

@@ -1,6 +1,10 @@
 Wave Foam Shader was built as a shader-driven visual study with a focus on
 motion, surface detail, and stylized presentation.
 
+- Badges:
+  - Unity [blue]
+  - Shader [blue]
+  
 ## Customization options
 Artists can set these to fit their needs:
 

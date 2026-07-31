@@ -22,12 +22,12 @@ import {
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useState } from "react";
-import ExperienceArray from "./ExperienceArray";
-import TagsArray from "./TagsArray";
+import useExperienceData from "../data/useExperienceData";
+import useTagData from "../data/useTagData";
 
 export default function Experience() {
-  const experience = ExperienceArray();
-  const options = TagsArray("ExperienceTags");
+  const experience = useExperienceData();
+  const options = useTagData("ExperienceTags");
   const [selected, setSelected] = useState("All");
 
   const handleSelected = (value) => {
@@ -191,10 +191,10 @@ export default function Experience() {
                           <HStack spacing={2} flexWrap="wrap" justify="flex-end" w="100%">
                             {exp.badges.map((badge) => (
                               <Badge
-                                key={badge.name}
+                                key={badge.text}
                                 colorScheme={badge.colorScheme}
                               >
-                                {badge.name}
+                                {badge.text}
                               </Badge>
                             ))}
                           </HStack>

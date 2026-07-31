@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
+import {
+  parseBadgeListLine,
+  parseIndentedListLine,
+  stripMarkdownComments,
+} from "../utils/markdownSectionData";
 
 export const parseExperience = (mdContent) => {
-  const content = mdContent.replace(/<!--[\s\S]*?-->/g, "");
+  const content = stripMarkdownComments(mdContent);
   const experience = [];
   const lines = content.split("\n");
 
@@ -61,17 +66,20 @@ export const parseExperience = (mdContent) => {
           collectingListItems = true;
           continue;
         }
-        if (collectingBadges && currentLine.startsWith("  - ")) {
-          const badgeLine = currentLine.substr(4).split("[");
-          const badgeName = badgeLine[0].trim();
-          const badgeColor = badgeLine[1]?.split("]")[0].trim() || "gray";
-          badges.push({ name: badgeName, colorScheme: badgeColor });
-          continue;
+        if (collectingBadges) {
+          const parsedBadge = parseBadgeListLine(currentLine);
+          if (parsedBadge) {
+            badges.push(parsedBadge);
+            continue;
+          }
         }
 
-        if (collectingListItems && currentLine.startsWith("  - ")) {
-          listItems.push(currentLine.substr(4).trim());
-          continue;
+        if (collectingListItems) {
+          const listItem = parseIndentedListLine(currentLine);
+          if (listItem) {
+            listItems.push(listItem);
+            continue;
+          }
         }
       }
 
@@ -90,7 +98,7 @@ export const parseExperience = (mdContent) => {
   return experience;
 };
 
-const ExperienceArray = () => {
+const useExperienceData = () => {
   const [experience, setExperience] = useState([]);
 
   useEffect(() => {
@@ -112,5 +120,5 @@ const ExperienceArray = () => {
   return experience;
 };
 
-export default ExperienceArray;
+export default useExperienceData;
 
