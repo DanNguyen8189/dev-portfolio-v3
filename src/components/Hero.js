@@ -30,26 +30,28 @@ export default function Header() {
       <Container
         id="hero"
         minH="100vh"
-        //maxW="100%"
+        position="relative"
+        overflow="hidden"
+        isolation="isolate"
+        maxW="100%"
         //bgImage="url('/assets/adrien-converse-unsplash.png.jpg')"
+        bg="rgba(255,0,0,0)"
         bgSize="cover"
         bgPosition="center"
         bgRepeat="no-repeat"
-        // _before={{
-        //   content: '""',
-        //   position: "absolute",
-        //   top: 0,
-        //   left: 0,
-        //   right: 0,
-        //   bottom: 0,
-        //   bg: "black/40", // 40% black overlay
-        // }}
+        _before={{
+          content: '""',
+          position: "absolute",
+          inset: 0,
+          zIndex: -1,
+          bgImage:
+            "url('/assets/adrien-converse-unsplash.png.jpg')",
+          bgSize: "cover",
+          bgPosition: "center",
+          opacity: 0.25
+        }}
       >
-        {/* <Box
-          position="absolute"
-          inset={0}
-          bg="blackAlpha.800"
-        /> */}
+        <Container>
         <Flex
           position="relative"
           h="100vh"
@@ -131,6 +133,7 @@ export default function Header() {
             </Stack>
           </Stack>
         </Flex>
+        </Container>
       </Container>
     </>
   );

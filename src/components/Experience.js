@@ -41,7 +41,7 @@ export default function Experience() {
           as={Box}
           textAlign={"center"}
           spacing={{ base: 8, md: 14 }}
-          pb={{ base: 20, md: 36 }}
+          py={{ base: 20, md: 36 }}
         >
           <Stack align="center" direction="row" px={4}>
             <HStack mx={4}>
@@ -143,7 +143,7 @@ export default function Experience() {
                               <Box px={2} align="left">
                                 {/* <Text size="md" fontWeight={700}>{exp.company}</Text> */}
                                 <Heading size="md">{exp.company}</Heading>
-                                <Text>{exp.position}</Text>
+                                <Text fontStyle="italic" opacity={0.6}>{exp.position}</Text>
                               </Box>
                             </HStack>
                             <Text px={2} fontWeight={300}>
