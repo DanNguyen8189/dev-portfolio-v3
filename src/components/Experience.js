@@ -85,7 +85,7 @@ export default function Experience() {
               top={0}
               bottom={0}
               width="7px"
-              bg="brand.800"
+              bg="designBG"
               borderRadius="full"
               transform="translateX(-50%)"
               display={{ base: "none", md: "block" }}

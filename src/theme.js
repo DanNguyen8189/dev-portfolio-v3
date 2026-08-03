@@ -26,8 +26,8 @@ const theme = extendTheme({
   colors: {
     brand: {
       50: "#E6FFFA",
-      //100: "#B2F5EA",
-      100: "#b8ece7",
+      100: "#B2F5EA",
+      //100: "#b8ece7",
       200: "#81E6D9",
       300: "#4FD1C5",
       400: "#38B2AC",
@@ -53,8 +53,8 @@ const theme = extendTheme({
   semanticTokens: {
     colors: {
       appText: {
-        default: "brand.900",
-        _dark: "brand.100",
+        default: "black",
+        _dark: "brand.50",
       },
       navText: {
         default: "brand.600",
@@ -87,6 +87,10 @@ const theme = extendTheme({
       cardBg: {
         default: "#c8f5ff",
         _dark: "#133751"
+      },
+      designBG:{
+        default: "brand.200",
+        _dark: "brand.500"
       },
       // cardText: {
       //   default: "brand.800",

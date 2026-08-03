@@ -6,13 +6,14 @@ This shader can be used by game artists to add variation to similar objects, and
 
 ## Uses
 
-- Repeating assets like grass, lanterns, rocks, or trees
-- Soft visual variation across groups of similar objects
-- Fading objects into the background with a multipy blend mode
+- Repeating assets like grass, lanterns, rocks, or trees that need visual variation
+- Fading distant objects into the background with a multipy blend mode
 
 <!-- ### Preview
 
 ![Object Variation Shader preview](https://via.placeholder.com/1200x675) -->
+
+![object variation shader preview](/assets/variationShaderPreview.png)
 
 ## Design Notes and Considerations
 

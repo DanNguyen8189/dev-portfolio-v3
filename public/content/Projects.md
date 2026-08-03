@@ -13,7 +13,7 @@ a color palette from them!
 ## Object Variation Shader
 Shader designed to add variation to repeated objects in a scene
 
-- ![600x200](https://via.placeholder.com/600x200)
+<!-- - ![600x200](https://via.placeholder.com/600x200) -->
 - Tags: TD
 <!-- - Badges:
   - Unity [blue]
