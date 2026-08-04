@@ -126,16 +126,22 @@ export default function Experience() {
                         display={{ base: "none", md: "block" }}
                         zIndex={1}
                       /> */}
+
                       <Card
                         size="sm"
                         color="inherit"
-                        px={{ base: 4, md: 6 }}
-                        py={{ base: 3, md: 4 }}
                         gap={4}
                         w={{ base: "100%", md: "70%" }}
                         mr={{ base: 0, md: isLeft ? 8 : 0 }}
                         ml={{ base: 0, md: isLeft ? 0 : 8 }}
+                        px={{ base: 4, md: 6 }}
+                        py={{ base: 3, md: 4 }}
                       >
+                        {/* <Box 
+                          shadow="md"                         
+                          px={{ base: 4, md: 6 }}
+                          py={{ base: 3, md: 4 }}
+                          > */}
                         <CardHeader>
                           <Flex justifyContent="space-between">
                             <HStack>
@@ -199,6 +205,7 @@ export default function Experience() {
                             ))}
                           </HStack>
                         </CardFooter>
+                        {/* </Box> */}
                       </Card>
                     </Flex>
                   );

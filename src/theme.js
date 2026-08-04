@@ -82,11 +82,13 @@ const theme = extendTheme({
       },
       siteBG: {
         default: "#aeedfb",
-        _dark: "#142a3e"
+        //_dark: "#142a3e"
+        _dark: "#26283C"
       },
       cardBg: {
         default: "#c8f5ff",
-        _dark: "#133751"
+        //_dark: "#11334c"
+        _dark: "#2D2F4A"
       },
       designBG:{
         default: "brand.200",
