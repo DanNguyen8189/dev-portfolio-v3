@@ -106,22 +106,30 @@ export default function Projects() {
                 <Card
                   direction={{
                     base: "column",
+                    md: "row",
                   }}
+                  align="stretch"
                   overflow="hidden"
-                  px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}
+                  //px={{ base: 4, md: 6 }} py={{ base: 3, md: 4 }}
                 >
-
-                  <Stack>
-                    <CardBody align="left">
+                  {project.image ? (
+                    <Image
+                      objectFit="cover"
+                      src={project.image}
+                      alt={project.name}
+                      w={{ md: "70%", sm: "100%" }}
+                      h="100%"
+                    />
+                  ) : null} 
+                  <Stack h="auto" w="100%"
+                  px={{ base: 5, md: 7 }} py={{ base: 4, md: 5 }}>
+                    <CardBody align="left" h="auto" w="100%" p={0}>
                       <Stack spacing={4}>
                       <Heading size="md">{project.name}</Heading>
-                      {project.image ? (
-                        <Image objectFit="cover" src={project.image} alt={project.name} />
-                      ) : null} 
 
                       <Text py={2}>{project.description}</Text>
 
-                      {project.video ? (
+                      {/* {project.video ? (
                         <Stack spacing={2} py={2}>
                           <Box
                             as="iframe"
@@ -133,13 +141,22 @@ export default function Projects() {
                             width="100%"
                             height="220px"
                           />
-                          {/* <Link href={project.video.href} isExternal color={`${color}.400`}>
-                            {project.video.text}
-                          </Link> */}
                         </Stack>
-                      ) : null}
+                      ) : null} */}
 
-                      <HStack py={2}>
+                      <HStack flexWrap="wrap" pt={4} spacing={2} justify="flex-end">
+                        {project.badges.map((badge) => (
+                          <Badge
+                            key={badge.text}
+                            colorScheme={badge.colorScheme}
+                          >
+                            {badge.text}
+                          </Badge>
+                        ))}
+                      </HStack>
+                      </Stack>
+                    </CardBody>
+                      <HStack py={2} justify="flex-end">
                         {project.buttons.map((button) => (
                           button.href.startsWith("/") ? (
                             <Button
@@ -159,18 +176,6 @@ export default function Projects() {
                           )
                         ))}
                       </HStack>
-                      <HStack flexWrap="wrap" pt={4} spacing={2} justify="flex-end">
-                        {project.badges.map((badge) => (
-                          <Badge
-                            key={badge.text}
-                            colorScheme={badge.colorScheme}
-                          >
-                            {badge.text}
-                          </Badge>
-                        ))}
-                      </HStack>
-                      </Stack>
-                    </CardBody>
                   </Stack>
                 </Card>
                 </Box>
